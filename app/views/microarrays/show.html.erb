@@ -1,0 +1,13 @@
+<p>
+  <b>Experiment:</b>
+  <%=h @microarray.experiment_id %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%=h @microarray.filename %>
+</p>
+
+
+<%= link_to 'Edit', edit_microarray_path(@microarray) %> |
+<%= link_to 'Back', microarrays_path %>

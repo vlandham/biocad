@@ -1,0 +1,22 @@
+<h1>Listing interactions</h1>
+
+<table>
+  <tr>
+    <th>Source</th>
+    <th>Experiment type</th>
+  </tr>
+
+<% for interaction in @interactions %>
+  <tr>
+    <td><%=h interaction.source %></td>
+    <td><%=h interaction.experiment_type %></td>
+    <td><%= link_to 'Show', interaction %></td>
+    <td><%= link_to 'Edit', edit_interaction_path(interaction) %></td>
+    <td><%= link_to 'Destroy', interaction, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New interaction', new_interaction_path %>

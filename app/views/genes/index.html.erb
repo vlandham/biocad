@@ -1,0 +1,32 @@
+<h1>Listing genes</h1>
+
+<table>
+  <tr>
+    <th>Gene symbol</th>
+    <th>Swissprot</th>
+    <th>Genebank</th>
+    <th>Omim</th>
+    <th>Entrez</th>
+    <th>Orf</th>
+    <th>Synonym</th>
+  </tr>
+
+<% for gene in @genes %>
+  <tr>
+    <td><%=h gene.gene_symbol %></td>
+    <td><%=h gene.swissprot %></td>
+    <td><%=h gene.genebank %></td>
+    <td><%=h gene.omim %></td>
+    <td><%=h gene.entrez %></td>
+    <td><%=h gene.orf %></td>
+    <td><%=h gene.synonym_id %></td>
+    <td><%= link_to 'Show', gene %></td>
+    <td><%= link_to 'Edit', edit_gene_path(gene) %></td>
+    <td><%= link_to 'Destroy', gene, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New gene', new_gene_path %>

@@ -1,4 +1,16 @@
-ActionController::Routing::Routes.draw do |map| 
+ActionController::Routing::Routes.draw do |map|
+  map.resources :interactions
+
+  map.resources :microarrays
+
+  map.resources :experiments
+
+  map.resources :pathways
+
+  map.resources :cancers
+
+  map.resources :genes
+ 
   # Restful Authentication Rewrites
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

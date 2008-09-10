@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @cancer.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @cancer.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_cancer_path(@cancer) %> |
+<%= link_to 'Back', cancers_path %>

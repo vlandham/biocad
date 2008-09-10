@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  gene_symbol: MyString
+  swissprot: MyString
+  genebank: MyString
+  omim: MyString
+  entrez: MyString
+  orf: MyString
+  synonym_id: 1
+
+two:
+  gene_symbol: MyString
+  swissprot: MyString
+  genebank: MyString
+  omim: MyString
+  entrez: MyString
+  orf: MyString
+  synonym_id: 1

@@ -1,0 +1,19 @@
+<h1>New interaction</h1>
+
+<% form_for(@interaction) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </p>
+  <p>
+    <%= f.label :experiment_type %><br />
+    <%= f.text_field :experiment_type %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', interactions_path %>

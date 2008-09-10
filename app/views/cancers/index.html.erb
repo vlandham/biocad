@@ -1,0 +1,22 @@
+<h1>Listing cancers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% for cancer in @cancers %>
+  <tr>
+    <td><%=h cancer.name %></td>
+    <td><%=h cancer.description %></td>
+    <td><%= link_to 'Show', cancer %></td>
+    <td><%= link_to 'Edit', edit_cancer_path(cancer) %></td>
+    <td><%= link_to 'Destroy', cancer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cancer', new_cancer_path %>

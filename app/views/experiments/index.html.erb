@@ -1,0 +1,24 @@
+<h1>Listing experiments</h1>
+
+<table>
+  <tr>
+    <th>Cancer</th>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% for experiment in @experiments %>
+  <tr>
+    <td><%=h experiment.cancer_id %></td>
+    <td><%=h experiment.name %></td>
+    <td><%=h experiment.description %></td>
+    <td><%= link_to 'Show', experiment %></td>
+    <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+    <td><%= link_to 'Destroy', experiment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New experiment', new_experiment_path %>
