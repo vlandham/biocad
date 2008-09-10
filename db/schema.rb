@@ -9,12 +9,75 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080811135317) do
+ActiveRecord::Schema.define(:version => 20080910231111) do
+
+  create_table "cancers", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cancers_genes", :force => true do |t|
+    t.integer "gene_id"
+    t.integer "cancer_id"
+  end
+
+  create_table "experiments", :force => true do |t|
+    t.integer  "cancer_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genes", :force => true do |t|
+    t.string   "gene_symbol"
+    t.string   "swissprot"
+    t.string   "genebank"
+    t.string   "omim"
+    t.string   "entrez"
+    t.string   "orf"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genes_interactions", :force => true do |t|
+    t.integer "gene_id"
+    t.integer "interaction_id"
+  end
+
+  create_table "genes_pathways", :force => true do |t|
+    t.integer "gene_id"
+    t.integer "pathway_id"
+  end
+
+  create_table "interactions", :force => true do |t|
+    t.string   "source"
+    t.string   "experiment_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "microarrays", :force => true do |t|
+    t.integer  "experiment_id"
+    t.string   "filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "passwords", :force => true do |t|
     t.integer  "user_id"
     t.string   "reset_code"
     t.datetime "expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pathways", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20080811135317) do
 
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+
+  create_table "synonyms", :force => true do |t|
+    t.integer  "gene_id"
+    t.string   "synonym"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
