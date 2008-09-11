@@ -14,7 +14,7 @@ class GenesController < ApplicationController
   # GET /genes/1.xml
   def show
     @gene = Gene.find(params[:id])
-
+    # @interactions = @gene.interactions
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gene }

@@ -1,3 +1,4 @@
 class Interaction < ActiveRecord::Base
-  has_and_belongs_to_many :genes
+  belongs_to :gene, :class_name => 'Gene', :foreign_key => 'gene_id'
+  belongs_to :gene_target, :class_name => 'Gene', :foreign_key => 'gene_id_target'
 end

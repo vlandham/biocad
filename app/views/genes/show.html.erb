@@ -28,11 +28,14 @@
   <%=h @gene.orf %>
 </p>
 
-<p>
-  <b>Synonym:</b>
-  <%=h @gene.synonym_id %>
-</p>
+<p>Interactions:</p>
+<ul>
+  <% @gene.gene_interactions.each do |interacting_gene| %>
+  <% interaction = interacting_gene.interactions.find_by_gene_id(@gene.id) || interacting_gene.interactions.find_by_gene_id_target(@gene.id) %>
+    <li><%= link_to interacting_gene.gene_symbol, gene_path(interacting_gene) %> -- <%= link_to interaction.source, interaction_path(interaction) if interaction  %></li>
+  <% end %>
+</ul>
 
-
+<%= @gene.interactions.size %>
 <%= link_to 'Edit', edit_gene_path(@gene) %> |
 <%= link_to 'Back', genes_path %>

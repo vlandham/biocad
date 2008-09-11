@@ -8,6 +8,11 @@
   <%=h @interaction.experiment_type %>
 </p>
 
+<ul>
+  <li><%=  link_to @gene1.gene_symbol, gene_path(@gene1)%></li>
+  <li><%= link_to @gene2.gene_symbol, gene_path(@gene2)%></li>
+</ul>
+
 
 <%= link_to 'Edit', edit_interaction_path(@interaction) %> |
 <%= link_to 'Back', interactions_path %>
