@@ -1,17 +1,9 @@
-h1. Bort
+h1. BioCAD
 
-Bort is a base Rails 2.1 application that makes creating new projects easier and faster. BO!
+BioCAD - the little website that could
 
-h2. Install
-
-* Download and unzip Bort
-* Edit the database.yml and the settings.yml files
-* Rake db:migrate
-* Have a brew and celebrate
 
 h2. Plugins Installed
-
-Bort comes with a few commonly used plugins installed and already setup.
 
 h3. RESTful Authentication
 
