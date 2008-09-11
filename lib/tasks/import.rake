@@ -68,7 +68,7 @@ namespace :import do
         # remove those '-'
         row_hash.delete_if {|key,value| value == "-"}
         update_gene_hash[gene.id] = row_hash
-        # TODO: get the synonyms as well
+        # TODO: make this smarter about importing synonyms
         if csv_row['synonyms'] && gene.synonyms.empty?
           syns = csv_row['synonyms'].split(',')
           syns.delete("-")
