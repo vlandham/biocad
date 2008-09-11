@@ -10,7 +10,9 @@
 		<meta name="resource-type" content="document" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<%= javascript_include_tag :defaults %>
-		<%= stylesheet_link_tag 'scaffold' %>
+		<%= stylesheet_link_tag 'screen', :media => "screen" %>
+		<%= stylesheet_link_tag 'print', :media => "print" %>
+		<%= stylesheet_link_tag 'ie', :media => "screen" %>
 	</head>
 	<body>
 		<div id="container">

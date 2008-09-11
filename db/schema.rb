@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080910231111) do
+ActiveRecord::Schema.define(:version => 20080910231114) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20080910231111) do
     t.datetime "updated_at"
   end
 
-  create_table "cancers_genes", :force => true do |t|
+  create_table "cancers_genes", :id => false, :force => true do |t|
     t.integer "gene_id"
     t.integer "cancer_id"
   end
@@ -42,12 +42,12 @@ ActiveRecord::Schema.define(:version => 20080910231111) do
     t.datetime "updated_at"
   end
 
-  create_table "genes_interactions", :force => true do |t|
+  create_table "genes_interactions", :id => false, :force => true do |t|
     t.integer "gene_id"
     t.integer "interaction_id"
   end
 
-  create_table "genes_pathways", :force => true do |t|
+  create_table "genes_pathways", :id => false, :force => true do |t|
     t.integer "gene_id"
     t.integer "pathway_id"
   end
