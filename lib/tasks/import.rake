@@ -1,6 +1,8 @@
 namespace :import do
   
-  desc "import PPI interaction data from Mei"
+  task :all => [:ppi, :gene_info]
+  
+  desc "import PPI interaction data (hprd) from Mei"
   task :ppi => :environment do
     # Bring in the faster csv library
     require 'faster_csv'
@@ -16,6 +18,7 @@ namespace :import do
     Interaction.delete_all
     
     # Loop through each line of the file - FasterCSV will break it up how we want it
+    puts "looking at #{full_ppi_file}"
     FasterCSV.foreach(full_ppi_file, options) do |row|
       # puts "adding #{row.inspect}"
       # Find or create the gene objects with the gene_symbols found in the particular row
@@ -33,8 +36,60 @@ namespace :import do
       i += 1
       puts "on number #{i}" if i % 500 == 0
     end
-    puts "imported #{Interaction.count} ppi interactions"
+    puts "imported #{Interaction.count} ppi interactions" 
+    puts "Currently #{Gene.count} genes"   
+  end
+  
+  desc "import gene information from hprd mapping"
+  task :gene_info => :environment do
+    require 'faster_csv'
+    mapping_file = 'hprd_mappings.txt'
+    full_mapping_file = File.expand_path(File.join(RAILS_ROOT, 'data', mapping_file))
+    options = {:col_sep => '|', :row_sep => :auto, :headers => true}
     
+    puts "reading in #{full_mapping_file}"
+    raw_table = FasterCSV.read(full_mapping_file, options)
+    
+    puts "mapping to gene symbol"
+    gene_symbol_hash = Hash.new
+    raw_table.each do |row|
+      gene_symbol_hash[row["gene_symbol"]] = row
+    end
+    puts "- done mapping"
+    puts "finding new information on current genes"
+    update_gene_hash = Hash.new
+    synonyms = Array.new
+    current_genes = Gene.find(:all)
+    current_genes.each do |gene|
+      csv_row = gene_symbol_hash[gene.gene_symbol]
+      if csv_row
+        row_hash = {:swissprot => csv_row['swissprot'], :entrez => csv_row['entrez'], 
+                    :omim => csv_row['omim'], :name => csv_row['name']}
+        # remove those '-'
+        row_hash.delete_if {|key,value| value == "-"}
+        update_gene_hash[gene.id] = row_hash
+        # TODO: get the synonyms as well
+        if csv_row['synonyms'] && gene.synonyms.empty?
+          syns = csv_row['synonyms'].split(',')
+          syns.delete("-")
+          syns.each do |syn|
+            syn.strip!
+            synonyms << {:synonym => syn, :gene_id => gene.id}
+          end
+        end
+      end
+    end
+    puts "- done"
+    
+    puts "updating genes"
+    Gene.update(update_gene_hash.keys, update_gene_hash.values)
+    puts "- done"
+    puts "#{update_gene_hash.size} genes updated"
+    
+    puts "adding new synonyms"
+    Synonym.create(synonyms)
+    puts "- done"
+    puts "#{synonyms.size} synonyms created"
   end
   
 end
