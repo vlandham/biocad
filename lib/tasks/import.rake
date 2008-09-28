@@ -1,6 +1,41 @@
+def get_data_path(filename)
+  File.expand_path(File.join(RAILS_ROOT, 'data', filename))   
+end
+
+def default_options
+  {:col_sep => '|', :row_sep => :auto, :headers => true}
+end
+
 namespace :import do
   
-  task :all => [:ppi, :gene_info]
+  task :all => [:cancer, :ppi, :gene_info]
+  
+  desc "import the oncogene - cancer data.  This is probably the first one to import"
+  task :cancer => :environment do
+    require 'faster_csv'
+    
+    gene_cancer_file = 'oncogene_cancer.txt'
+    full_file_path = get_data_path(gene_cancer_file)
+    puts "Reading in: #{full_file_path}"
+    options = default_options
+    
+    i = 0
+    FasterCSV.foreach(full_file_path,options) do |row|
+      gene = Gene.find_or_create_by_gene_symbol(row['gene'])l
+      cancers = row['cancer']
+      if cancers
+        cancers = cancers.split(";").compact 
+        cancers.each do |cancer_name|
+          cancer = Cancer.find_or_create_by_name(cancer_name.strip)
+          cancer.save!
+          gene.cancers << cancer
+        end
+      end
+      gene.save!
+      i += 1
+    end
+    puts "Imported #{i} genes"
+  end
   
   desc "import PPI interaction data (hprd) from Mei"
   task :ppi => :environment do
@@ -8,11 +43,11 @@ namespace :import do
     require 'faster_csv'
     # Setup file name which will be in /data/test_ppi.txt
     ppi_file = 'test_ppi.txt'
-    full_ppi_file = File.expand_path(File.join(RAILS_ROOT, 'data', ppi_file))   
+    full_ppi_file = 
     # Setup options to use to parse csv
     # So its not really comma separated, its | separated - hence the :col_sep
     # Also, i added headers so i can access the values for each column as a hash (aka map)
-    options = {:col_sep => '|', :row_sep => :auto, :headers => true}
+    options = default_options
     i = 0
     # Clear out the interaction table so we can refill it
     Interaction.delete_all
@@ -21,9 +56,9 @@ namespace :import do
     puts "looking at #{full_ppi_file}"
     FasterCSV.foreach(full_ppi_file, options) do |row|
       # puts "adding #{row.inspect}"
-      # Find or create the gene objects with the gene_symbols found in the particular row
-      gene1 = Gene.find_or_create_by_gene_symbol(row['gene1'])
-      gene2 = Gene.find_or_create_by_gene_symbol(row['gene2'])
+      # Find the gene objects with the gene_symbols found in the particular row
+      gene1 = Gene.find_by_gene_symbol(row['gene1'])
+      gene2 = Gene.find_by_gene_symbol(row['gene2'])
       
       # Save them so that they have a spot in the database (if they weren't there already)
       gene1.save!
@@ -44,8 +79,8 @@ namespace :import do
   task :gene_info => :environment do
     require 'faster_csv'
     mapping_file = 'hprd_mappings.txt'
-    full_mapping_file = File.expand_path(File.join(RAILS_ROOT, 'data', mapping_file))
-    options = {:col_sep => '|', :row_sep => :auto, :headers => true}
+    full_mapping_file = get_data_path(mapping_file)
+    options = default_options
     
     puts "reading in #{full_mapping_file}"
     raw_table = FasterCSV.read(full_mapping_file, options)
