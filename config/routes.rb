@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cancers
 
   map.resources :genes
+  
+  map.resources :searches
  
   # Restful Authentication Rewrites
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
