@@ -28,7 +28,7 @@
   <%=h @gene.orf %>
 </p>
 
-<p>Interactions:</p>
+<p><b>Interactions:</b></p>
 <ul>
   <% @gene.gene_interactions.each do |interacting_gene| %>
   <% interaction = interacting_gene.interactions.find_by_gene_id(@gene.id) || interacting_gene.interactions.find_by_gene_id_target(@gene.id) %>
@@ -36,6 +36,5 @@
   <% end %>
 </ul>
 
-<%= @gene.interactions.size %>
 <%= link_to 'Edit', edit_gene_path(@gene) %> |
 <%= link_to 'Back', genes_path %>
