@@ -27,8 +27,10 @@ namespace :import do
         cancers = cancers.split(";").compact 
         cancers.each do |cancer_name|
           cancer = Cancer.find_or_create_by_name(cancer_name.strip)
-          cancer.save!
-          gene.cancers << cancer
+          unless gene.cancers.include?(cancer)
+            cancer.save!
+            gene.cancers << cancer
+          end
         end
       end
       gene.save!
