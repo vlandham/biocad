@@ -8,7 +8,7 @@ end
 
 namespace :import do
   
-  task :all => [:cancer, :ppi, :gene_info]
+  task :all => [:cancer, :gene_info, :ppi]
   
   desc "import the oncogene - cancer data.  This is probably the first one to import"
   task :cancer => :environment do
@@ -21,7 +21,7 @@ namespace :import do
     
     i = 0
     FasterCSV.foreach(full_file_path,options) do |row|
-      gene = Gene.find_or_create_by_gene_symbol(row['gene'])l
+      gene = Gene.find_or_create_by_gene_symbol(row['gene'])
       cancers = row['cancer']
       if cancers
         cancers = cancers.split(";").compact 
