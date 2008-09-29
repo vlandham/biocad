@@ -8,10 +8,10 @@ end
 
 namespace :import do
   
-  task :all => [:cancer, :gene_info, :ppi]
+  task :all => [:onco_genes, :gene_info, :ppi]
   
   desc "import the oncogene - cancer data.  This is probably the first one to import"
-  task :cancer => :environment do
+  task :onco_genes => :environment do
     require 'faster_csv'
     
     gene_cancer_file = 'oncogene_cancer.txt'
@@ -22,6 +22,7 @@ namespace :import do
     i = 0
     FasterCSV.foreach(full_file_path,options) do |row|
       gene = Gene.find_or_create_by_gene_symbol(row['gene'])
+      
       cancers = row['cancer']
       if cancers
         cancers = cancers.split(";").compact 
@@ -29,10 +30,13 @@ namespace :import do
           cancer = Cancer.find_or_create_by_name(cancer_name.strip)
           unless gene.cancers.include?(cancer)
             cancer.save!
-            gene.cancers << cancer
+            gene.gene_types.create(:association => 'onco', :cancer_id => cancer.id)
           end
         end
-      end
+      else
+        gene.gene_types.create(:association => 'onco')
+      end #if
+      
       gene.save!
       i += 1
     end
