@@ -1,3 +1,4 @@
+gene|cancer
 1-Dec|
 AKT1|
 CACNA2D2|
@@ -345,7 +346,7 @@ PALB2|
 PARK2|
 PART1|
 PAWR|
-PAX2|Wilms' tumor
+PAX2|Wilms tumor
 PAX3|
 PBK|
 PCGF2|
@@ -353,7 +354,7 @@ CD274|
 PDCD4|
 PDGFB|
 PDGFRL|
-PDRG1|"breast cancer
+PDRG1|breast cancer
 PEG3|
 PERP|
 PHB|

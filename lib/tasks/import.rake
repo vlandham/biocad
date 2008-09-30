@@ -8,39 +8,42 @@ end
 
 namespace :import do
   
-  task :all => [:onco_genes, :gene_info, :ppi]
+  task :all => [:cancers, :gene_info, :ppi]
   
   desc "import the oncogene - cancer data.  This is probably the first one to import"
-  task :onco_genes => :environment do
+  task :cancers => :environment do
     require 'faster_csv'
+    types = {'onco' => 'oncogene_cancer.txt', 'suppressor' => 'suppressor_cancer.txt'}
+    # gene_cancer_file = 'oncogene_cancer.txt'
+    # 
+    types.each do |type,gene_cancer_file|
+      full_file_path = get_data_path(gene_cancer_file)
+      puts "Reading in: #{full_file_path}"
+      options = default_options
     
-    gene_cancer_file = 'oncogene_cancer.txt'
-    full_file_path = get_data_path(gene_cancer_file)
-    puts "Reading in: #{full_file_path}"
-    options = default_options
-    
-    i = 0
-    FasterCSV.foreach(full_file_path,options) do |row|
-      gene = Gene.find_or_create_by_gene_symbol(row['gene'])
+      i = 0
+      FasterCSV.foreach(full_file_path,options) do |row|
+        gene = Gene.find_or_create_by_gene_symbol(row['gene'])
       
-      cancers = row['cancer']
-      if cancers
-        cancers = cancers.split(";").compact 
-        cancers.each do |cancer_name|
-          cancer = Cancer.find_or_create_by_name(cancer_name.strip)
-          unless gene.cancers.include?(cancer)
-            cancer.save!
-            gene.gene_types.create(:association => 'onco', :cancer_id => cancer.id)
+        cancers = row['cancer']
+        if cancers
+          cancers = cancers.split(";").compact 
+          cancers.each do |cancer_name|
+            cancer = Cancer.find_or_create_by_name(cancer_name.strip)
+            unless gene.cancers.include?(cancer)
+              cancer.save!
+              gene.gene_types.create(:association => type, :cancer_id => cancer.id)
+            end
           end
-        end
-      else
-        gene.gene_types.create(:association => 'onco')
-      end #if
+        else
+          gene.gene_types.create(:association => type)
+        end #if
       
-      gene.save!
-      i += 1
+        gene.save!
+        i += 1
+      end
+      puts "Imported #{i} genes"
     end
-    puts "Imported #{i} genes"
   end
   
   desc "import PPI interaction data (hprd) from Mei"
