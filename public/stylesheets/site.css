@@ -47,6 +47,12 @@ hr {
   background-color: #f2f2f2;
 }
 
+.title {
+   border-left: 6px solid #FF3418; 
+   padding-left:5px;
+}
+
+
 /* Nav Bar
  * --------------------------------------------------------------------- */
 #top-nav {
@@ -98,23 +104,18 @@ ul#nav li a:hover {
 
 /*----*/
 
-.title {
-   border-left: 6px solid #FF3418; 
-   padding-left:5px;
-}
-
-ul#gene-nav {
+ul#info-nav {
    list-style:none;
    clear:both;
    width: 50%;
 }
-ul#gene-nav li {
+ul#info-nav li {
   float:left;
   height:32px;
   line-height:32px;
   margin-right:1px;
 }
-ul#gene-nav li a {
+ul#info-nav li a {
   display:block;
   float:left;
   line-height:32px;
@@ -125,13 +126,8 @@ ul#gene-nav li a {
   padding:0 25px 0 20px;
 }
 
-ul#gene-nav li a:hover {
+ul#info-nav li a:hover {
   color: #FF3418;
-}
-
-.clearbox {
-  height: 20px;
-  clear:both;
 }
 
 #intro {
@@ -219,57 +215,43 @@ input.text, select.text {
   border: 4px solid #b4b4b4;
 }
 
-/* Cancer box
+/* Box
  * --------------------------------------------------------------------- */
-.cancer-box {
+.box {
   float: left;
   margin: 20px;
   text-align: center;
 }
 
-.cancer-box a {
+.box a {
+  display:block;
+  line-height:70px;
+  height:70px;
+  font-size: 140%;
+  text-decoration: none;
+  color: #000000;
+  padding:0 20px 0 20px;
+  margin:0pt;
+}
+
+.box a:hover {
+  text-decoration: underline;
+}
+
+.cancer a {
   background-color: #A7D285;
-  display:block;
-  line-height:70px;
-  height:70px;
-  font-size: 140%;
-  text-decoration: none;
-  color: #000000;
-  padding:0 20px 0 20px;
-  margin:0pt;
 }
 
-.cancer-box a:hover {
-  text-decoration: underline;
-}
-
-.gene-box {
-  float: left;
-  margin: 20px;
-  text-align: center;
-}
-
-.gene-box a {
+.gene a {
   background-color: #D0E3F1;
-  display:block;
-  line-height:70px;
-  height:70px;
-  font-size: 140%;
-  text-decoration: none;
-  color: #000000;
-  padding:0 20px 0 20px;
-  margin:0pt;
 }
 
-.gene-box a:hover {
-  text-decoration: underline;
-}
 
-.content {
+/*.info h3 {
   margin-left: 15px;
 }
-
-.content p {
+*/
+.info p {
   margin-left: 25px;
 }
 
@@ -295,6 +277,10 @@ p.quiet { color: #666; }
   margin:auto;
 }
 
+.clearbox {
+  height: 20px;
+  clear:both;
+}
 
 .header-title {
   color: #111;
@@ -303,8 +289,9 @@ p.quiet { color: #666; }
   margin-bottom: 0.75em;
 }
 
-#header .header-title { font-size: 3.5em; line-height: 0.8; 
- 
+#header .header-title { 
+  font-size: 3.5em; 
+  line-height: 0.8; 
   height: 100px; 
 /*  border-bottom: 4px solid #dddddd;  */
 }

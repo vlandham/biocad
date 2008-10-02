@@ -2,15 +2,24 @@
 
 <div class="info">
 
-  <h3>Description:</h3>
+  <h2>Description:</h2>
   <p>
     <%=h @cancer.description || 'none' %>
   </p>
   
   <h2>Related Genes:</h2>
+  <h3>Oncogenes</h3>
   <div class="center">
-    <%= render :partial => 'genes/gene', :collection => @cancer.genes %>
+    <%= render :partial => 'genes/gene', :collection => @cancer.onco_genes %>
   </div>
+  <div class="clearbox">
+    
+  </div>
+  <h3>Suppressor Genes</h3>
+  <div class="center">
+    <%= render :partial => 'genes/gene', :collection => @cancer.suppressor_genes %>
+  </div>
+  
   
   <div class="clearbox">
     
