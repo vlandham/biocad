@@ -50,7 +50,7 @@ namespace :import do
     # Bring in the faster csv library
     require 'faster_csv'
     # Setup file name which will be in /data/test_ppi.txt
-    ppi_file = 'test_ppi.txt'
+    ppi_file = 'hprd_ppi.txt'
     full_ppi_file = get_data_path(ppi_file)
     # Setup options to use to parse csv
     # So its not really comma separated, its | separated - hence the :col_sep

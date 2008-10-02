@@ -19,5 +19,11 @@ namespace :visualize do
       end
     end
   end
+  
+  desc "run railroad on this application - might need to comment out that line that errors"
+  task :rails do
+    `railroad -Mal | dot -Tpdf > models.pdf`
+    `railroad -Cl | neato -Tpng > controllers.png`
+  end
 
 end
