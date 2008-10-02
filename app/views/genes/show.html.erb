@@ -1,5 +1,5 @@
-<h2 id="gene-name"><%= @gene.gene_symbol %></h2>
-<div class="gene">
+<h2 class="title"><%= @gene.gene_symbol %></h2>
+<div class="info">
   <h2 id="general-info">General Information</h2>
   <div class="content">
   
@@ -28,17 +28,14 @@
 
   <h2>Related Cancers:</h2>
   <div class="center">
-    <% @gene.cancers.each do |cancer| %>
-      <div class="cancer-box">
-        <%= link_to cancer, cancer %>
-      </div>
-    <% end %>
+    <%= render :partial => 'cancers/cancer', :collection => @gene.cancers %>
   </div>
   
   <div class="clearbox">  
   </div>
   
+  <%= link_to 'Edit', edit_gene_path(@gene) %> |
+  <%= link_to 'Back', genes_path %>
+  
 </div>
 
-<%= link_to 'Edit', edit_gene_path(@gene) %> |
-<%= link_to 'Back', genes_path %>

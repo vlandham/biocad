@@ -7,5 +7,9 @@ class Gene < ActiveRecord::Base
   has_many :synonyms
   
   validates_uniqueness_of :gene_symbol
+  
+  def to_s
+    self.gene_symbol
+  end
     
 end

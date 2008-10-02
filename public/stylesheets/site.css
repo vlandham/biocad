@@ -42,7 +42,7 @@ hr {
   text-align:center;
 }
 
-.gene h2 {
+.info h2 {
   padding-left: 5px;
   background-color: #f2f2f2;
 }
@@ -98,7 +98,7 @@ ul#nav li a:hover {
 
 /*----*/
 
-#gene-name {
+.title {
    border-left: 6px solid #FF3418; 
    padding-left:5px;
 }
@@ -296,14 +296,14 @@ p.quiet { color: #666; }
 }
 
 
-p.title {
+.header-title {
   color: #111;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 0.75em;
 }
 
-#header p.title { font-size: 3.5em; line-height: 0.8; 
+#header .header-title { font-size: 3.5em; line-height: 0.8; 
  
   height: 100px; 
 /*  border-bottom: 4px solid #dddddd;  */

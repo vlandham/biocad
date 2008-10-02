@@ -8,7 +8,7 @@ end
 
 namespace :import do
   
-  task :all => [:cancers, :gene_info, :ppi]
+  task :all => ['db:reset',:cancers, :gene_info, :ppi]
   
   desc "import the oncogene - cancer data.  This is probably the first one to import"
   task :cancers => :environment do
@@ -24,7 +24,6 @@ namespace :import do
       i = 0
       FasterCSV.foreach(full_file_path,options) do |row|
         gene = Gene.find_or_create_by_gene_symbol(row['gene'])
-      
         cancers = row['cancer']
         if cancers
           cancers = cancers.split(";").compact 
@@ -52,7 +51,7 @@ namespace :import do
     require 'faster_csv'
     # Setup file name which will be in /data/test_ppi.txt
     ppi_file = 'test_ppi.txt'
-    full_ppi_file = 
+    full_ppi_file = get_data_path(ppi_file)
     # Setup options to use to parse csv
     # So its not really comma separated, its | separated - hence the :col_sep
     # Also, i added headers so i can access the values for each column as a hash (aka map)
@@ -68,17 +67,20 @@ namespace :import do
       # Find the gene objects with the gene_symbols found in the particular row
       gene1 = Gene.find_by_gene_symbol(row['gene1'])
       gene2 = Gene.find_by_gene_symbol(row['gene2'])
+      if(gene1 && gene2)
       
-      # Save them so that they have a spot in the database (if they weren't there already)
-      gene1.save!
-      gene2.save!
+        # Save them so that they have a spot in the database (if they weren't there already)
+        gene1.save!
+        gene2.save!
       
-      # create a new interaction between these two genes, and with the rest of the information in the row
-      interaction = Interaction.new(:gene_id => gene1.id, :gene_id_target => gene2.id, :source => row['reference'], :experiment_type => row['experiment_type'])
-      # save all three -- the ! indicates that it will throw an error if there is a problem
-      interaction.save!
-      i += 1
-      puts "on number #{i}" if i % 500 == 0
+        # create a new interaction between these two genes, and with the rest of the information in the row
+        interaction = Interaction.new(:gene_id => gene1.id, :gene_id_target => gene2.id,
+                                      :source => row['reference'], :experiment_type => row['experiment_type'])
+        # save all three -- the ! indicates that it will throw an error if there is a problem
+        interaction.save!
+        i += 1
+        puts "on number #{i}" if i % 500 == 0
+      end
     end
     puts "imported #{Interaction.count} ppi interactions" 
     puts "Currently #{Gene.count} genes"   

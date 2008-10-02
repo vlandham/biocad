@@ -1,12 +1,21 @@
-<p>
-  <b>Name:</b>
-  <%=h @cancer.name %>
-</p>
+<h2 class="title"><%=h @cancer.name %></h2>
 
-<p>
-  <b>Description:</b>
-  <%=h @cancer.description %>
-</p>
+<div class="info">
+
+  <h3>Description:</h3>
+  <p>
+    <%=h @cancer.description || 'none' %>
+  </p>
+  
+  <h2>Related Genes:</h2>
+  <div class="center">
+    <%= render :partial => 'genes/gene', :collection => @cancer.genes %>
+  </div>
+  
+  <div class="clearbox">
+    
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_cancer_path(@cancer) %> |
