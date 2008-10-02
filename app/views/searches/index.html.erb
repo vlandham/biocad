@@ -1,13 +1,8 @@
 <h2>Search</h2>
 <div class="search blue left">
   <div class="site">
-    <form>
-      <div class="label">
-        Search by <strong>Gene</strong>
-      </div> 
-        <input type="text" name="q" value="" class="text" title="Search by Gene Name, GeneBank ID, or other">
-        <input type="image" src="/images/icons/search.png" alt="search" />
-    </form>
+    <%= render :partial => 'genes/_search' %>
+    
   </div>
 </div>
 
@@ -19,8 +14,8 @@
       </div>
       <!-- <input type="text" name="q" value="" class="text"> -->
       <select type="text" name="q" value="" class="text">
-        <% %w(prostate lymphoma breast colon skin).each do |cancer| %>
-        <option value="<%= cancer %>"><%= cancer %></option>
+        <% @cancers.each do |cancer| %>
+          <option value="<%= cancer %>"><%= cancer %></option>
         <% end %>
       </select>
       <input type="image" src="/images/icons/search.png" alt="search" />
