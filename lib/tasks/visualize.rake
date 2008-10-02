@@ -11,7 +11,6 @@ namespace :visualize do
       v = Vertex.new
       v.label = cancer.name
       v.color = '#ffff40'
-      v.size = 1.5
       cancer.genes.each do |gene|
         g = genes_vertices[gene.gene_symbol] || Vertex.new
         g.label = gene.gene_symbol
