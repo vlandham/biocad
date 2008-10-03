@@ -14,5 +14,6 @@ class Gene < ActiveRecord::Base
   def to_s
     self.gene_symbol
   end
+  
     
 end
