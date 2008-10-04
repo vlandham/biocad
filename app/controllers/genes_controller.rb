@@ -7,7 +7,6 @@ class GenesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @genes }
-      format.txt {render :txt => @genes}
     end
   end
 
