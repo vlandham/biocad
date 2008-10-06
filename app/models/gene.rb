@@ -1,6 +1,6 @@
 class Gene < ActiveRecord::Base
   acts_as_network :gene_interactions, :through => :interactions
-  
+  acts_as_network :gene_transcription_factors, :through => :transcription_factors
   has_many :cancers, :through => :gene_types
   has_many :onco_cancers, :through => :gene_types, :source => :cancer, :conditions => ['gene_types.association = ?', 'onco']
   has_many :suppressed_cancers, :through => :gene_types, :source => :cancer, :conditions => ['gene_types.association = ?', 'suppressor']

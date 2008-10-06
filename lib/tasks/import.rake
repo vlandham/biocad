@@ -45,6 +45,29 @@ namespace :import do
     end
   end
   
+  desc "import transcription factors"
+  task :tf => :environment do
+    require 'faster_csv'
+    ppi_file = 'human_TF.txt'
+    full_ppi_file = get_data_path(ppi_file)
+    options = default_options
+    i = 0
+    puts "looking at #{full_ppi_file}"
+    FasterCSV.foreach(full_ppi_file, options) do |row|
+      # puts "adding #{row.inspect}"
+      # Find the gene objects with the gene_symbols found in the particular row
+      gene1 = Gene.find_by_gene_symbol(row['gene1'])
+      gene2 = Gene.find_by_gene_symbol(row['gene2'])
+      if(gene1 && gene2)
+        tf = TranscriptionFactor.new(:gene_id => gene1.id, :gene_id_target => gene2.id)
+        tf.save!
+        i += 1
+        puts "on number #{i}" if i % 300 == 0
+      end
+    end
+     puts "imported #{TranscriptionFactor.count} Transcription Factors" 
+  end
+  
   desc "import PPI interaction data (hprd) from Mei"
   task :ppi => :environment do
     # Bring in the faster csv library
@@ -70,8 +93,8 @@ namespace :import do
       if(gene1 && gene2)
       
         # Save them so that they have a spot in the database (if they weren't there already)
-        gene1.save!
-        gene2.save!
+        # gene1.save!
+        # gene2.save!
       
         # create a new interaction between these two genes, and with the rest of the information in the row
         interaction = Interaction.new(:gene_id => gene1.id, :gene_id_target => gene2.id,

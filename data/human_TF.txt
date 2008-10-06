@@ -1,3 +1,4 @@
+gene1|gene2
 JUN|SLC3A2
 SP1|COL1A1
 LEF1|ADA
