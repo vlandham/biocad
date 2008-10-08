@@ -2,7 +2,7 @@ class CancersController < ApplicationController
   # GET /cancers
   # GET /cancers.xml
   def index
-    @cancers = Cancer.find(:all)
+    @cancers = Cancer.search(params[:search], params[:find])
 
     respond_to do |format|
       format.html # index.html.erb

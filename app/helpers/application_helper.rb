@@ -5,4 +5,9 @@ module ApplicationHelper
     content_tag(container, str) if container
   end
   
+  def icon(name, extension="png")
+    "icons/#{name}.#{extension}"
+  end
+  
+  
 end

@@ -1,0 +1,7 @@
+<% form_tag model_path, :method => 'get', :class => 'search' do %>
+  <label>
+    search term:
+  </label>
+    <%= text_field_tag :search, params[:search], :class => "text" %>
+    <%= submit_tag "search", :name => nil%>
+<% end %>

@@ -49,8 +49,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_bort_session',
-    :secret      => '699dd6891315876f628d7db9cc2ce63f1ff83e5606001d5b53b702214b47bb7ecadb942c38c82697e5192e947dacfbcb74dd7b69c95bb9b32b255bcaee309c66'
+    :session_key => '_biocad_session',
+    :secret      => '699dd6891315876f628d7db9cc2ce63f1ff8aee8a890099877992112d5b53b702214b47bb7ecadb942c38c82697e5192e947dacfbcb74dd7b69c95bb9b32b255bcaee309c66'
   }
 
   # Use the database for sessions instead of the cookie-based default,

@@ -1,6 +1,6 @@
-<h1>Listing genes</h1>
+<h2 class="title">Genes</h2>
 
-<%= render :partial => 'genes/_search' %>
+<%= render :partial => 'layouts/search',:locals => {:model_path => genes_path}  %>
 
 <table>
   <tr>

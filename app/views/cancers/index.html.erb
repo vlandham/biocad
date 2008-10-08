@@ -1,4 +1,6 @@
-<h2 id="gene-name">Cancers</h2>
+<h2 class="title">Cancers</h2>
+
+<%= render :partial => 'layouts/search',:locals => {:model_path => cancers_path}  %>
 
 <table>
   <tr>
@@ -14,6 +16,12 @@
 <% end %>
 </table>
 
-<br />
+<div class="center">
+  <%= will_paginate @cancers %>
+</div>
+
+<div class="clearbox">
+  
+</div>
 
 <%= link_to 'New cancer', new_cancer_path %>
