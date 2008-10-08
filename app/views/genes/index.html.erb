@@ -25,9 +25,12 @@
   </tr>
 <% end %>
 </table>
+<div class="center">
+  <%= will_paginate @genes %>
+</div>
 
-<%= will_paginate @genes %>
-
-<br />
+<div class="clearbox">
+  
+</div>
 
 <%= link_to 'New gene', new_gene_path %>

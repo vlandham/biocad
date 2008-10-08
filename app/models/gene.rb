@@ -12,9 +12,9 @@ class Gene < ActiveRecord::Base
   
   def self.search(search,page)
     if search
-      paginate(:all, :page => page, :conditions => ['gene_symbol LIKE ?', "%#{search}%"], :order => 'gene_symbol')
+      paginate(:all, :page => page, :conditions => ['gene_symbol LIKE ?', "%#{search}%"], :order => 'gene_symbol', :include => :synonyms)
     else
-      self.paginate(:all, :page => page, :order => 'gene_symbol')
+      self.paginate(:all, :page => page, :order => 'gene_symbol', :include => :synonyms)
     end
   end
   
