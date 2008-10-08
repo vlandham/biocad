@@ -32,5 +32,6 @@
 <div class="clearbox">
   
 </div>
-
-<%= link_to 'New gene', new_gene_path %>
+<% if logged_in? %>
+  <%= link_to 'New gene', new_gene_path %>
+<% end %>

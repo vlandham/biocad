@@ -23,5 +23,6 @@
 <div class="clearbox">
   
 </div>
-
-<%= link_to 'New cancer', new_cancer_path %>
+<% if logged_in? %>
+  <%= link_to 'New cancer', new_cancer_path %>
+<% end %>
