@@ -2,7 +2,7 @@ class GenesController < ApplicationController
   # GET /genes
   # GET /genes.xml
   def index
-    @genes = Gene.find(:all)
+    @genes = Gene.search(params[:search],params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

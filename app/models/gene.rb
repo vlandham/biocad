@@ -10,6 +10,13 @@ class Gene < ActiveRecord::Base
   
   validates_uniqueness_of :gene_symbol
   
+  def self.search(search,page)
+    if search
+      paginate(:all, :page => page, :conditions => ['gene_symbol LIKE ?', "%#{search}%"], :order => 'gene_symbol')
+    else
+      self.paginate(:all, :page => page, :order => 'gene_symbol')
+    end
+  end
   
   def to_s
     self.gene_symbol
