@@ -1,3 +1,4 @@
 $(document).ready(function(){
-  $('.corner').corner()
+  $('.corner').corner();
+  $('table').colorize();
 });

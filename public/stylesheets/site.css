@@ -272,6 +272,11 @@ th,td {
   border-bottom:  1px solid #ddd;
   border-right:   1px solid #ddd;
 }
+th {font-weight:bold;background:#D0E3F1;}
+
+tr td a {
+  text-decoration:none;
+}
 
 /* Default Classes
  * --------------------------------------------------------------------- */
