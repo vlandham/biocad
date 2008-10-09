@@ -140,6 +140,7 @@ ul#info-nav li a:hover {
  * --------------------------------------------------------------------- */
 form.main-search {
   width: 365px;
+  height: 90px;
   padding-bottom: 10px;
   margin-bottom: 50px;
 }
@@ -155,7 +156,7 @@ form.main-search {
 
 .left {
   float:left;
-  height: 90px;
+  
 }
 
 form.main-search  {
@@ -232,7 +233,7 @@ form.search {
 .box a {
   display:block;
   line-height:70px;
-  height:70px;
+  height:50px;
   font-size: 140%;
   text-decoration: none;
   color: #000000;
