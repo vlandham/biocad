@@ -56,15 +56,16 @@
   <% end %>
   <h2>Transcription Factors:</h2>
   <% unless @gene.gene_transcription_factors.empty? %>
-    <ul>
-      <% @gene.gene_transcription_factors.each do |tf| %>
-        <li><%= link_to tf.gene_symbol, gene_path(tf) %></li>
-      <% end %>
-    </ul>
+    <div class="center">
+      <%= render :partial => 'cancers/cancer', :collection => @gene.gene_transcription_factors %>
+    </div>
   <% else %>
     <p class='quiet'>none</p>
   <% end %>
+  <div class="clearbox">
+    
+  </div>
 </div>
-<%= link_to 'All Genes', genes_path %> | <%= link_to 'Edit', edit_gene_path(@gene) %>
+<%= link_to 'All Genes', genes_path %>   <%= link_to 'Edit', edit_gene_path(@gene) if logged_in? %>
 
 
