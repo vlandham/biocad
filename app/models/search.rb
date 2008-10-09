@@ -9,6 +9,7 @@ class Search < ActiveRecord::Base
     scope = scope.scoped :conditions => ["genes.swissprot LIKE ?", "%#{swissprot}%"] unless swissprot.blank?
     scope = scope.scoped :conditions => ["genes.entrez LIKE ?", "%#{entrez}%"] unless entrez.blank?
     scope = scope.scoped :include => :cancers, :conditions => ["cancers.name LIKE ?", "%#{cancer_name}%"] unless cancer_name.blank?
+    scope = scope.scoped :include => :synonyms, :conditions => ["synonyms.synonym LIKE ?", "%#{synonym}%"] unless synonym.blank?
     scope.paginate(:all, :page => page, :order => 'gene_symbol', :include => :synonyms)
   end
   

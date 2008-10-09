@@ -1,6 +1,6 @@
 <% form_for(@search) do |f| %>
   <%= f.error_messages %>
-
+  <div class="column span-9 append-1 first">
   <p>
     <%= f.label :gene_symbol %><br />
     <%= f.text_field :gene_symbol %>
@@ -13,6 +13,8 @@
     <%= f.label :cancer_name %><br />
     <%= f.text_field :cancer_name %>
   </p>
+  </div>
+  <div class="column span-9 last">
   <p>
     <%= f.label :synonym %><br />
     <%= f.text_field :synonym %>
@@ -21,12 +23,13 @@
     <%= f.label :entrez %><br />
     <%= f.text_field :entrez %>
   </p>
-  <p>
+  <!-- <p>
     <%= f.label :interacts_with %><br />
     <%= f.text_field :interacts_with %>
-  </p>
-  
+  </p> -->
+  </div>
   <p>
     <%= f.submit "Search" %>
   </p>
+
 <% end %>
