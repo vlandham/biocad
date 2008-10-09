@@ -1,0 +1,32 @@
+<% form_for(@search) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :gene_symbol %><br />
+    <%= f.text_field :gene_symbol %>
+  </p>
+  <p>
+    <%= f.label :swissprot %><br />
+    <%= f.text_field :swissprot %>
+  </p>
+  <p>
+    <%= f.label :cancer_name %><br />
+    <%= f.text_field :cancer_name %>
+  </p>
+  <p>
+    <%= f.label :synonym %><br />
+    <%= f.text_field :synonym %>
+  </p>
+  <p>
+    <%= f.label :entrez %><br />
+    <%= f.text_field :entrez %>
+  </p>
+  <p>
+    <%= f.label :interacts_with %><br />
+    <%= f.text_field :interacts_with %>
+  </p>
+  
+  <p>
+    <%= f.submit "Search" %>
+  </p>
+<% end %>

@@ -4,6 +4,12 @@
 <%= render :partial => 'cancers/main_search' %>
 <div class="clearbox">
 </div>
+
+<h3><a href="javascript: void(0)" id="advanced-search-show">Advanced Search</a></h3>
+<div id="advanced-search" style="display:none;">
+  <%= render :partial => 'new', :local => @search %>
+  <p><a href="javascript:void(0)" id="advanced-search-hide">cancel</a></p>  
+</div>
 <div class="clearbox">
   
 </div>

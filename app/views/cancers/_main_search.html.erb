@@ -4,7 +4,7 @@
         Search by <strong>Cancer</strong>
       </div>
         <%= text_field_tag :search, params[:search], :class => "text" %>
-        <!-- <%= select_tag :id, options_from_collection_for_select(@cancers, "id", "name"), :class => "text" %> -->
+  
         <%= image_submit_tag "Search", :name => nil, :src => "/images/icons/search.png" , :alt => 'search'%>
     <%- end -%>      
 </div>

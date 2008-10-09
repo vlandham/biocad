@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081005022847) do
+ActiveRecord::Schema.define(:version => 20081009154824) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,18 @@ ActiveRecord::Schema.define(:version => 20081005022847) do
     t.string   "name"
     t.text     "description"
     t.string   "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "searches", :force => true do |t|
+    t.string   "gene_symbol"
+    t.string   "swissprot"
+    t.string   "entrez"
+    t.string   "synonym"
+    t.string   "gene_type"
+    t.string   "cancer_name"
+    t.string   "interacts_with"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
