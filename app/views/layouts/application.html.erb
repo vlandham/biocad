@@ -16,6 +16,8 @@
     <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag "jquery.curvycorners.min.js" %>
     <%= javascript_include_tag "jquery.colorize.js" %>
+    
+    <%= yield :head %>
 	</head>
 	<body>
     <div id="main" class="container">

@@ -1,3 +1,16 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="/javascripts/swfobject.js"></script>
+  <script type="text/javascript">
+  	var flashvars = {};
+  	flashvars.controller = "genes";
+    flashvars.value_id = <%= @gene.id %>;
+  	var params = {};
+  	var attributes = {};
+  	swfobject.embedSWF("/flash/gene_interactions.swf", "flash-alt", "300", "300", "9.0.0", false, flashvars, params, attributes);
+  </script>
+ <% end %>
+
+
 <h2 class="title"><%= @gene.gene_symbol %></h2>
 <div class="info">
   <h2 id="general-info">General Information</h2>
@@ -45,26 +58,31 @@
   </div>
   <h2>Interactions:</h2>
   <% unless @gene.gene_interactions.empty? %>
-  <ul>
-    <% @gene.gene_interactions.each do |interacting_gene| %>
-    <% interaction = interacting_gene.interactions.find_by_gene_id(@gene.id) || interacting_gene.interactions.find_by_gene_id_target(@gene.id) %>
-      <li><%= link_to interacting_gene.gene_symbol, gene_path(interacting_gene) %> -- <%= link_to interaction.source, interaction_path(interaction) if interaction  %></li>
-    <% end %>
-  </ul>
+  <div class="center">
+    <%= render :partial => 'genes/gene', :collection => @gene.gene_interactions %>
+  </div>
   <% else %>
     <p class="quiet">none</p>
   <% end %>
+  <div class="clearbox">
+    
+  </div>
+  
   <h2>Transcription Factors:</h2>
   <% unless @gene.gene_transcription_factors.empty? %>
     <div class="center">
-      <%= render :partial => 'cancers/cancer', :collection => @gene.gene_transcription_factors %>
+      <%= render :partial => 'genes/gene', :collection => @gene.gene_transcription_factors %>
     </div>
   <% else %>
     <p class='quiet'>none</p>
   <% end %>
   <div class="clearbox">
-    
   </div>
+  <div id="flash-alt">
+		<a href="http://www.adobe.com/go/getflashplayer">
+			<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+		</a>
+	</div>
 </div>
 <%= link_to 'All Genes', genes_path %>   <%= link_to 'Edit', edit_gene_path(@gene) if logged_in? %>
 

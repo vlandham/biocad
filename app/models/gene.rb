@@ -1,4 +1,5 @@
 class Gene < ActiveRecord::Base
+  has_many :interactions
   acts_as_network :gene_interactions, :through => :interactions
   acts_as_network :gene_transcription_factors, :through => :transcription_factors
   has_many :cancers, :through => :gene_types

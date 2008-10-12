@@ -14,8 +14,8 @@ class InteractionsController < ApplicationController
   # GET /interactions/1.xml
   def show
     @interaction = Interaction.find(params[:id])
-    @gene1 = Gene.find(@interaction.gene_id)
-    @gene2 = Gene.find(@interaction.gene_id_target)
+    @gene1 = @interaction.gene
+    @gene2 = @interaction.gene_target
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @interaction }

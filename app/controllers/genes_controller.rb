@@ -7,7 +7,6 @@ class GenesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @genes }
-      format.text { render :text => @genes.to_json(:only => [:gene_symbol], :include => {:cancers => {:only => [:name]}} ).to_s}
     end
   end
   
@@ -18,7 +17,8 @@ class GenesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gene }
-      format.text { render :text => @gene.to_json(:only => [:gene_symbol], :include => {:cancers => {:only => [:name]}} ).to_s}
+      # format.text { render :text => @gene.to_json(:only => [:gene_symbol], :methods => {:gene_interactions => {:only => [:sets]}} ).to_s}
+      format.text { render :text => "["+@gene.to_json(:only => [:gene_symbol,:id], :include => {:gene_interactions_in => {:only => [:gene_symbol,:id]}, :gene_interactions_out => {:only => [:gene_symbol,:id]}} ).to_s+"]"}
     end
   end
 
