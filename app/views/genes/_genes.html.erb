@@ -1,3 +1,4 @@
+<% unless genes.empty? %>
 <table>
   <tr>
     <th>Gene symbol</th>
@@ -24,7 +25,10 @@
 <div class="center">
   <%= will_paginate genes %>
 </div>
-
 <div class="clearbox">
   
 </div>
+<% else %>
+
+<p class="quiet">Sorry, no results found</p>
+<% end %>
