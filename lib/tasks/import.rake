@@ -181,7 +181,7 @@ namespace :import do
     puts "#{synonyms.size} synonyms created"
     
     puts "adding new proteins"
-    Protein.update(new_proteins)
+    Protein.create(new_proteins)
     puts "- done"
     puts "#{new_proteins.size} proteins created"
   end
