@@ -1,376 +1,388 @@
 gene|cancer
-MYCN|Neuroblastomas
-MYB|myeloid leukemia;ovarian cancer;melanoma
-FGR|sarcoma
-ABL2|acute myeloid leukemia
-HRAS|colon cancer;bladder cancer;breast cancer;ovarian cancer;lymphoma;lung cancer;colorectal cancer;acute leukemia
-MYC|acute myeloid leukaemia; colon cancer; breast carcinoma;colorectal cancers; liver cancer;Burkitt lymphoma; neuroblastomas; small cell lung cancer;hepatocellular cancer
-KRAS|lung cancer;colon cancer;breast;gastric cancer;stomach cancer;pancreatic cancer;biliary cancer;colorectal cancer;bladder cancer;acute myeloid leukemia;
-ARAF|
-RAF1|stomach cancer
-ERBB2|breast cancer;ovarian cancer; gastric cancer;prostate cancer;lung cancer;glioblastoma
-ETS1|colon cancer;Ewing's sarcoma;acute lymphoblastic leukaemia
-SPI1|acute myeloid leukemia;myeloid leukemia
-YES1|lymphoma
-SKI|Schwann cell development and myelination
-SRC|colon cancer
-MYCL1|small-cell lung cancer
-ABL1|chronic myeloid leukemia
-FOS|bone lesions;skin cancer
-MOS|renal cell carcinoma; acute myeloblastic leukemia;Burkitt lymphoma
-BRAF|melanomas;colorectal cancer;gliomas;lung cancer;sarcoma;ovarian carcinoma;breast cancer;liver cancer;thyroid cancer
-FES|acute promyelocytic leukemia
-CBL|acute myeloid leukemia
-KIT|mastocytosis;leukemia;gastrointestinal stromal cancer
-JUN|intestinal cancer
-AKT2|pancreatic cancer;ovarian cancer
-AKT1|breast cancer;thyroid cancer;papillary cancer;colorectal;ovarian cancer;gastric cancer
-NRAS|colorectal cancer;thyroid carcinoma;myeloma;primary plasma cell leukemia;rectal cancer;papillary cancer
-CRK|
-THRB|thyroid papillary cancer;small cell lung cancer
-ROS1|glioblastoma;acute lymphoblastic leukemia; malignant melanoma;ovarian carcinoma
-ERAS|
-MRAS|
-REL|breast cancer
-RELA|
-RELB|
-ERBB4|bladder cancer
-ERBB3|bladder cancer;lung cancer
-LYN|hyperglobulinemia
-FOSB|
-MPL|acute leukemia;
-MAF|
-BMI1|breast cancer;leukaemia
-AKT3|
-MAFA|
-MAFB|myelogenous leukemia
-MAFF|
-MAFG|
-MAFK|
-MYBL2|
-MYBL1|
-RALB|leukemia
-RALA|leukemia
-EVI1|myeloid leukemia/myelodysplastic syndrome
-ERPL1|
-MERTK|
-TCL6|
-ELK1|
-VAV1|
-RRAS2|
-ETS2|
-MCF2|
-CSF1R|
-ERG|
-MAP3K8|
-CRKL|
-LCA10|
-VAV3|
-VAV2|
-VAV1|
-ECT2|
-OVCA2|
-MET|
-NTRK1|
-BCL2|
-MAS1|
-ARHGEF5|
-PIM1|
-ETV3|
-WNT1|
-WNT2|
-WNT3|
-WNT5A|
-LCK|
-USP6|
-FLT1|
-FOXG1|
-NOTCH4|
-RAB8A|
-IRF4|
-GLI1|
-GLI2|
-GLI3|
-GLI4|
-HTN1|
 FYN|
-AXL|
-PIM3|
-AKAP13|
-STYK1|
-PARK7|
+BAK1|
+SPI1|acute myeloid leukemia;myeloid leukemia
+MYCN|neuroblastoma
+BRAF|melanoma;colon;glioma;lung;sarcoma;ovarian;breast;liver;thyroid
+SKI|schwann cell development;myelination
+TBC1D3B|prostate
+ZSCAN22|
+CRKL|chronic myelogenous leukemia
+BRD4|
+MET|lung;liver;renal cell carcinoma;hepatocellular carcinoma
+LPSA|lipoma
+KLF6|chronic lymphocytic leukemia;prostate;gastric
+AKT1|breast;thyroid;papillary thyroid;colon;ovarian;gastric
+AKT2|pancreatic;ovarian
+AKT3|
+ERBB2|breast;ovarian;gastric;prostate;lung;glioblastoma
+ERBB3|bladder;lung
+ERBB4|bladder
+PDGFA|
+PDGFB|glioblastoma;meningioma
+WT1|wilms' tumor
+NR2F1|
+NR2F6|
+MDM2|
+ANPEP|
+RARA|
+RARB|hepatocellular carcinoma
+RARG|
+COAS1|
+COAS2|
+COAS3|
+PIM1|prostate;leukemia
 PIM2|
-SKIL|
-JUNB|
-NOV|
-NFKB2|
-CXCL1|
-EIF3E|
-ETV6|
-DDX6|
+PIM3|pancreatic
+SRC|colon
+YES1|lymphoma
+ARMET |pancreatic
+CTTN|
+NME1|melanoma;myeloid leukemia
+HKR1|
+PDZD4|
+HKR3|
+FOXG1|
+PAEP|
+ACO1|
+KIT|mastocytosis;leukemia;gastrointestinal
+PIWIL2|
+YAP1|liver;prostate
+THPO|myeloproliferative leukemia
+NUP214|t-cell acute lymphoblastic leukemia
+ZBTB7|leukemia
 EPHA1|
+FGFR1OP|chronic myelogenous leukemia-like myeloid hyperplasia;hodgkin lymphoma
+THRA|papillary thyroid;pituitary adenoma
+THRB|papillary thyroid;small cell lung carcinoma
+IRF4|multiple myeloma
+IRF5|
+PAI1|
+TLX1|t-cell acute lymphoblastic leukemia
+TBC1D3|
+TBC1D1|
+CBL|acute myeloid leukemia
+MCF2L|
+MOS|renal cell carcinoma;acute myeloid leukemia;burkitt lymphoma
+CASP1 |leukemia;lymphoma
+L1CAM|
+MPL|acute leukemia
+GCCR|
+PLCL1|small cell lung carcinoma
+IL3|acute lymphoblastic leukemia
+MAD1L1|
+RASSF5|
+RASSF3|
+CSF2RB|leukemia
+PTGS2|breast;colon;cervical
+MERTK|
+BCL11A|hodgkin lymphoma
+FOXM1|
+MRG|
+NTRK1|thyroid;acute myeloid leukemia
+WNT5A|melanoma
+C6ORF173|
+HRAS|colon;bladder;breast;ovarian;lymphoma;lung;acute leukemia
+RASA1|lung
+FKHR|
+OVC|
+GLI|glioma;basal cell carcinoma
+KIF14|breast;medulloblastoma
+PTTG2|
+NGFB|
+HMGA1|burkitt lymphoma
+HMGA2|lung;lipoma
+FGF3|non-small cell lung carcinoma
+FGF4|gastric
+FGF5|renal cell carcinoma
+FGF6|
+NGFR|
+ABCB1|ovarian;leukemia
+USP4|small cell lung carcinoma
+USP6|
+CDK4|thyroid;melanoma
+ELL|acute myeloid leukemia
+DAPK1 |bladder
+PIK3CA|ovarian;cervical;colon
+NEDD9|
+ANP32A|acute myeloid leukemia
+VEGF|leukemia
+BCL2A1 |gastric
+TG|burkitt lymphoma
+GNAI2|ovarian
+FOSB|
+E2F1|
+MYB|myeloid leukemia;ovarian;melanoma
+MYC|acute myeloid leukemia;colon;breast;liver;burkitt lymphoma;neuroblastoma;small cell lung carcinoma;hepatocellular carcinoma
+VEGFB|
+MRGX1|
+MRGX2|
+MRGX3|
+MRGX4|
+PASK|myeloid leukemia
+MYCL1|small cell lung carcinoma
+ESR1|breast;cervical;bladder
+ARAF1|sarcoma
+SPATA4|
+CBLB|breast
+MST2|
+GRB2|
+TGFA |burkitt lymphoma
+DDX6|b-cell lymphoma
+CDON|
+TSN |acute lymphoblastic leukemia
+EST2|
+SCCA1|
 RHOA|
 RHOB|
 RHOC|
-ZBTB48|
-ZSCAN22|
-HKR1|
-JUND|
-CTTN|
-HTN3|
-CXCL3|
-CXCL2|
-RET|
-MDM2|
-LCN2|
-FGF4|
-PDGFA|
-PDGFB|
-THRA|
-EGFR|
-FGF3|
-FGF5|
-FGF6|
-FGFR3|
-PDGFRA|
-PDGFRB|
-NGFB|
-VEGFA|
-TGFA|
-IL2|
-FGFR1|
-FAS|
-GRB2|
-CCDC6|
-NCOA4|
-TFG|
-DEK|
-TRIM24|
-PRKAR1A|
-GOLGA5|
-FGFR1OP2|
-TRIM33|
-BCR|
-PAX3|
-FOXO1|
-PAX8|
-PPARG|
-HMGA2|
-LPP|
-RUNX1|
-PML|
-ANP32A|
-ETV4|
-EWSR1|
-FASN|
-WT1|
-NUT|
-BRD4|
-MLL|
-GPHN|
-FUS|
-RUNX1T1|
-ELL|
-FLI1|
-MN1|
-DDIT3|
-VHL|
-ATM|
-TERT|
-NCL|
-GNAS|
-ZBTB7A|
-USP6NL|
-USP4|
-SHH|
-SSX1|
-CXCL10|
-GNAI2|
-EIF4E|
-ESR1|
-CDK4|
-TLX1|
-C6ORF173|
-EMSY|
-TBC1D3|
-USP32|
-CBLB|
-WISP1|
-FRAT1|
-HTATIP|
-HMGA1|
-MITF|
-FURIN|
-EPOR|
-CYP24A1|
-BCL6|
-VWCE|
-SMYD2|
-PIWIL2|
-PASK|
-IRF5|
-CARD11|
-TRPM8|
-PTP4A3|
-MKL1|
-MYCNOS|
-CYLD|
-GNA12|
-PTTG1|
-TCL1A|
-TCL1B|
-NUMB|
-BCAR1|
-ARMET|
-SMO|
-PTCH1|
-BCL2A1|
-CAV1|
-DAPK1|
-AR|
-PDZD4|
-SLC16A1|
-E2F1|
-TAL2|
-RARA|
-RARB|
-RARG|
-ELAVL4|
-NFKB1|
-EVI2B|
-NME1|
-BCL6|
-IL3|
-CASP1|
-RASA1|
-CSF2RB|
-FOSL1|
-FLT3|
-STOM|
-DCC|
-MMP9|
-MCM2|
-KLF6|
-GFI1|
-LMO2|
-NUP214|
-BCL3|
-SERTAD3|
-KIF14|
-TBC1D3B|
-SPATA4|
-TBC1D1|
-MCF2L|
-CDON|
-C1orf152|
-PPIAL4B|
-PIGU|
-PGR|
-DCD|
-YAP1|
-BCL11A|
-NET1|
-EIF5A2|
-JMJD2C|
-PTTG2|
-EEF1A2|
-MEIS1|
-SKP2|
-SEP9|
-SET|
-TLE1|
-PBX3|
-PBX2|
-PBX1|
-ENPP1|
-PAEP|
-ABCB1|
-ODC1|
-MLLT4|
-EVI2A|
-HBA1|
-EGR2|
-EGR1|
-CCND3|
-MMP1|
-ZEB2|
-CBFA2T2|
-PLCL1|
-DKC1|
-USP11|
-FOXO4|
-FOXM1|
-YWHAB|
-NPM1|
-CCND1|
-PIK3CA|
-FGFR1OP|
-THPO|
-SSPN|
-PTGS2|
-SERPINE1|
-TOM1|
-TCRA|
-MEN1|
-NR3C1|
-MSX2|
-ERF|
-MAS1L|
-MRGPRG|
-MRGPRF|
-MRGPRE|
-MRGPRD|
-MRGPRX4|
-MRGPRX3|
-MRGPRX2|
-MRGPRX1|
-RASSF5|
-RASSF3|
-ABI2|
-USP8|
-SNW1|
-MAD1L1|
-NEDD9|
 RREB1|
-SH3BP2|
-RHOH|
-LIG4|
-BAG1|
-LUZP1|
-MPP3|
-TTF1|
-TSN|
-ABR|
-L1CAM|
-TNF|
-TG|
-RPL7A|
-JUP|
-LEP|
-ANXA2|
-ANPEP|
-HGF|
-DRD4|
+SKIIP|
+CAV1 |breast;ovarian;prostate;colon;uterine sarcoma;leiomyoma
+ERG|prostate
+PTTG1 |colon
+ERF|
+DDIT3|liposarcoma
+VHL|renal cell carcinoma
+SERTAD3|
+CYLD|
+MCTS1|chronic lymphocytic leukemia
+MKL1|acute megakaryoblastic leukemia
+TFG|thyroid
+DKC1|
+VIS1|murine myeloid leukemia
+VIS2|
+PAX3|alveolar rhabdomyosarcoma
+PAX8|thyroid
+MN1 |acute myeloid leukemia
 CSF1|
-CEBPD|
-ACO1|
-ELK3|
-RGR|
-STK3|
-DACH1|
-H3F3A|
-NOTCH1|
-JARID1A|
-NGFR|
+EGFR|non-small cell lung carcinoma;colon
+PVT1|burkitt lymphoma
+MMP1|breast
 COL1A2|
+MSX2|
+CBFA2T1|acute myeloid leukemia
+MMP9|
+CBFA2T2|acute myeloid leukemia
+REL|breast
+CRK|
+RET|thyroid;leukemia;bladder;multiple endocrine neoplasia type ii;hirschsprung disease
+BCAR1 |breast
+MLLT4|mixed lineage leukemia
+MLLT7|acute leukemia
+GNAS|thyroid
+TOM1|
+AR |prostate;breast;endometrial;colon
+CSF1R|myeloid leukemia
+FOXO1A|
+MCF2|b-cell lymphoma
+USP11|ovarian
+NCL|cervical
+NRAS|colon;thyroid;myeloma;primary plasma cell leukemia;papillary thyroid
+MYCLK1|
+ENPP1|leukemia
+NOTCH1 |melanoma;t-cell acute lymphoblastic leukemia
+TLS|liposarcoma;leukemogenesis
+PGR|breast;endometrial
+ARHGEF5|breast
+ATM|breast
+NFKB1|
+NFKB2|b-cell lymphoma;chronic lymphocytic leukemia
+USP32|
+GPHN|
+MAFA|
+MAFB|myelogenous leukemia
+LCK|t-cell acute lymphoblastic leukemia
+NET1|neuroepithelioma
+MAFF|
+MAFG|
+LCO|liver
+MAFK|
+GOLGA5|papillary thyroid
+TNF|
+TCL1A|t-cell leukemia
+TCL1B|t-cell leukemia
+RHOH |lymphoma
+LMO2|t-cell acute lymphoblastic leukemia;large-b-cell lymphoma
+FURIN|non-small cell lung carcinoma
+HBA1|
+LEP|
+MEN1|leukemia
+SSPN|lung;ovarian
+NUMB |acute lymphoblastic leukemia
+ABI2|abelson murine leukemia
 STAT3|
-VEGFB|
-MAP3K11|
-NR2F1|
-NR2F6|
-SERPINB3|
-BAK1|
+NOTCH4|mmtv
+AXL|myeloid leukemia
+CARD11|diffuse large b cell lymphoma
+MITF|melanoma
+USP8 |chronic myeloproliferative disorder
+MCM2|acute myeloid leukemia
+TCL6 |t-cell leukemia
+EGR1|
+EGR2|
+PML|acute promyelocytic leukemia
+GLI2|glioma;basal cell carcinoma
+GLI3|glioblastoma
+GLI4|
+CCND1|
+CCND3|
+ABL1|chronic myeloid leukemia
+ABL2|acute myeloid leukemia
+MRAS|
+SKIL|
+FASN|prostate;breast;cervical;bladder;ovarian
+VAV1|acute lymphoblastic leukemia
+VAV2|
+VAV3|
+JUNB|hodgkin lymphoma;anaplastic large cell lymphoma
+JUND|
+ERAS|
+PPARG1|
+FGFR1OP2|acute myeloid leukemia
+EVI1|myeloid leukemia;myelodysplastic syndrome
+ODC1|colon
+NCYM|small cell lung carcinoma
+RHEB2|
 ZIC1|
+HGF|
+EVI2A|myeloid leukemia
+EVI2B|myeloid leukemia
+SEPT9|acute myeloid leukemia;ovarian
+RUNX1|leukemia
+YWHAB|
+SSX1|
+NOV|
+TRIM33|papillary thyroid
+EPB72 |chronic myeloid leukemia
+FES|acute promyelocytic leukemia
+DCC|colon;gastric
+DCD|breast
+FGFR1|acute myeloid leukemia;b-cell lymphoma;myeloid hyperplasia;eosinophilia
+FGFR3|myeloma;epithelial;bladder;cervical
+TRIM24|papillary thyroid
+NPM1|acute myeloid leukemia
+ABR |acute myeloid leukemia
+EEF1A1L14|prostate;lung;breast;colon
+MRGD|
+MRGE|
+MRGF|
+MRGG|
+WNT1|mmtv
+WNT2|breast
+WNT3|mmtv
+ECT2|
+SKP2|lymphoma;breast
+FGR|sarcoma
+DACH1|pituitary precursor cell proliferation
+BMI1|breast;leukemia
 NRL|
-RHEB|
-SEPT9|
+MAS1|
+DEK|acute myeloid leukemia
+SMYD2|
+TAL2|t-cell acute lymphoblastic leukemia
+GFI1|myeloid leukemia
+ZEB2|epithelial
+LCN2|
+FLI1|leukemia
+LPP|
+BCR|chronic myeloid leukemia;acute lymphoblastic leukemia
+RRAS2|ovarian
+CCL3L2|
+TTF1|
+PTP4A3|colon
+PRKAR1A|papillary thyroid
+PTCH1 |basal cell carcinoma;medulloblastoma;rhabdomyosarcoma
+NUT|
+EEF1A2|ovarian
+HTATIP|lymphoma
+DJ1|
+TCRA|t-cell leukemia;lymphoma
+DRD4|
+MAP3K8|lung
+JARID1A|b-cell leukemia;glioblastoma
+CXCL1|ovarian;breast
+CXCL2|
+CXCL3|melanoma
+CCDC6|papillary thyroid
+NCOA4|prostate
+ROS1|glioblastoma;acute lymphoblastic leukemia;melanoma;ovarian
+PDGFRB|
+PDGFRA|basal cell carcinoma
+WISP1|gastric;colon
+CYP24A1|breast
+ELAVL4|neuroblastoma
+FOSL1|
+MAP3K11|
+EWSR1|ewing sarcoma
+ANXA2|
+JMJD2C|esophageal
+FOS|bone lesions;skin
+C11ORF30|osteosarcoma;ovarian;breast
+RPL7A|
+YUASA|
+JUN|intestinal
+JUP|breast;ovarian
+ETS1|colon;ewing sarcoma;acute lymphoblastic leukemia
+ETS2|breast;acute myeloid leukemia
+LIG4 |myeloma
+RGL4|
+HSCR5|hirschsprung disease
+KRAS|lung;colon;breast;gastric;pancreatic;biliary;bladder;acute myeloid leukemia
+LYN|hyperglobulinemia
+MPP3|
+MYBL1|
+MYBL2|
+TNFRSF6|papillary thyroid;follicular lymphoma;thyroid
+MEIS1|neuroblastoma
+MLL |mixed lineage leukemia
+RAF1|gastric
+EPOR|myeloid leukemia;erythroleukemia
+ELK1|lung
+ELK3|
+LUZP1|
+H3F3A|
+TLE1|adenocarcinoma
+EIF3E|mmtv
+VWCE|colon;gastric;lung;breast
+PBX1|b-cell leukemia
+PBX2|b-cell leukemia
+ETV3|
+ETV4|ewing sarcoma
+ETV6|acute lymphoblastic leukemia
+PBX3|b-cell leukemia
+CXCL10|colon
+FLT1|
+FLT3|acute myeloid leukemia
+RELA|
+RELB|
+AKAP13|breast
+EIF4E|
+CDC91L1|bladder
+SEA|
+SET|acute myeloid leukemia
+CEBPD |prostate;ovarian
+FRAT1|
+ERPL1|
+BAG1|
+FUS|
+SH3BP2 |myeloid leukemia
+STYK1|lung
+RMYC|
+GNA12|
+RAB8A|
+SHH|pancreatic
+BCL2|glioma;b-cell leukemia
+USP6NL|
+BCL3|chronic lymphocytic leukemia
+BCL5|b-cell leukemia;lymphoma
+BCL6|lymphoma
+EIF5A2|ovarian
+MAF|
+BMYC|
+SMOH |basal cell carcinoma;medulloblastoma;rhabdomyosarcoma
+HPV18I1|cervical
+TRPM8|prostate
+RALA|leukemia
+RALB|leukemia
+IL2 |t-cell lymphoma

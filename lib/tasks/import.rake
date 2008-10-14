@@ -137,15 +137,24 @@ namespace :import do
         # remove those '-'
         row_hash.delete_if {|key,value| value == "-"}
         update_gene_hash[gene.id] = row_hash
-        # TODO: make this smarter about importing synonyms
-        if csv_row['synonyms'] && gene.synonyms.empty?
-          syns = csv_row['synonyms'].split(',')
+        
+        if csv_row['synonyms'] 
+          # get the current names contained in the synonyms for this gene
+          current_synonyms = gene.synonyms.map {|gs| gs.synonym}
+          syns = csv_row['synonyms'].split(';')
           syns.delete("-")
           syns.each do |syn|
             syn.strip!
-            synonyms << {:synonym => syn, :gene_id => gene.id}
+            # only bring them in if its not in the database yet.
+            synonyms << {:synonym => syn, :gene_id => gene.id} unless current_synonyms.include? syn
           end
+        end #synonyms
+        
+        if csv_row['proteins']
+          current_proteins = gene.proteins
+          proteins = 
         end
+        
       end
     end
     puts "- done"
