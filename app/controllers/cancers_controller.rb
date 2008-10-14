@@ -18,6 +18,7 @@ class CancersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @cancer }
+      format.text { render :text => @cancer.json_query.to_s}
     end
   end
 

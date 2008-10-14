@@ -19,4 +19,17 @@ class Cancer < ActiveRecord::Base
   def to_s
     self.name
   end
+  
+  def json_query
+    gene_options = [:gene_symbol, :id]
+    self.to_json(:only => [:name,:id], :include => 
+      {:genes => {:only => [:gene_symbol, :id], :include => 
+        {
+          :gene_interactions_in => {:only => gene_options},
+          :gene_interactions_out => {:only => gene_options},
+          :gene_transcription_factors_in => {:only => gene_options}
+        }
+      }}
+    )
+  end
 end
