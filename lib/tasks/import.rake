@@ -8,7 +8,7 @@ end
 
 namespace :import do
   
-  task :all => ['db:reset',:cancers, :gene_info, :ppi]
+  task :all => ['db:reset',:cancers, :gene_info, :ppi, :tf]
   
   desc "import the oncogene - cancer data.  This is probably the first one to import"
   task :cancers => :environment do
@@ -128,6 +128,8 @@ namespace :import do
     puts "finding new information on current genes"
     update_gene_hash = Hash.new
     synonyms = Array.new
+    new_proteins = Array.new
+    
     current_genes = Gene.find(:all)
     current_genes.each do |gene|
       csv_row = gene_symbol_hash[gene.gene_symbol]
@@ -146,14 +148,23 @@ namespace :import do
           syns.each do |syn|
             syn.strip!
             # only bring them in if its not in the database yet.
-            synonyms << {:synonym => syn, :gene_id => gene.id} unless current_synonyms.include? syn
+            unless current_synonyms.include? syn
+              synonyms << {:synonym => syn, :gene_id => gene.id} 
+            end
           end
         end #synonyms
         
         if csv_row['proteins']
-          current_proteins = gene.proteins
-          proteins = 
-        end
+          current_proteins = gene.proteins.map {|gp| gp.name}
+          proteins = csv_row['proteins'].split(';')
+          proteins.delete("-")
+          proteins.each do |protein|
+            protein.strip!
+            unless current_proteins.include? protein
+              new_proteins << {:name => protein, :gene_id => gene.id} 
+            end
+          end
+        end #proteins
         
       end
     end
@@ -168,6 +179,11 @@ namespace :import do
     Synonym.create(synonyms)
     puts "- done"
     puts "#{synonyms.size} synonyms created"
+    
+    puts "adding new proteins"
+    Protein.update(new_proteins)
+    puts "- done"
+    puts "#{new_proteins.size} proteins created"
   end
   
 end
