@@ -9,6 +9,13 @@ class CancersController < ApplicationController
       format.xml  { render :xml => @cancers }
     end
   end
+  # TODO: factor this out into its own resource
+  def network
+    @cancer = Cancer.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
 
   # GET /cancers/1
   # GET /cancers/1.xml
