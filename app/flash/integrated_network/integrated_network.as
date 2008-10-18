@@ -4,6 +4,7 @@ package {
 	
 	import flare.animate.Transitioner;
 	import flare.display.TextSprite;
+	import flare.util.Shapes;
 	import flare.vis.Visualization;
 	import flare.vis.controls.ExpandControl;
 	import flare.vis.controls.HoverControl;
@@ -13,7 +14,6 @@ package {
 	import flare.vis.data.NodeSprite;
 	import flare.vis.events.SelectionEvent;
 	import flare.vis.operator.layout.RadialTreeLayout;
-	import flare.util.Shapes;
 	
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
@@ -70,6 +70,14 @@ package {
 			_des["import"] = {"gene_transcription_factors_in":true,
 							  "gene_interactions_out":false, 
 							  "gene_interactions_in":false};
+			_des["positions"] = {"base":1,
+							  "gene_transcription_factors_in":2,
+							  "gene_interactions_out":3, 
+							  "gene_interactions_in":3};
+			_des["node_colors"] = {1:0xFF0000,
+							  2:0xFF6600,
+							  2:0xFF6600, 
+							  3:0x8B8B83};
 			_des["edge_colors"] = {"gene_transcription_factors_in":0x30420f,
 								   "gene_interactions_out":0x8c7d15,
 								   "gene_interactions_in":0x8c7d15,
@@ -109,6 +117,7 @@ package {
 		//	});
 			
 			trace("graph size: "+_graph.nodes.length);
+			_graph.nodes.sortBy("data.position");
 			_vis = new Visualization(_graph);
 			_vis.bounds = new Rectangle(0, 0, w, h);
 			_vis.x = 21;
@@ -116,9 +125,6 @@ package {
 			
 			setLayout();
 			addHoverControl();
-			
-//			var dc:DragControlMod = new DragControlMod(NodeSprite);
-//			_vis.controls.add(dc);
 
 			_vis.controls.add(new ExpandControl());
 			
@@ -140,17 +146,19 @@ package {
 			_vis.tree.nodes.visit(function(n:NodeSprite):void {		
 				addNameHover(n);
 					
-				n.lineColor = 0x0000dd; n.lineAlpha = 0.7;
+//				n.lineColor = 0x0000dd; n.lineAlpha = 0.7;
 				n.lineWidth = 2;
+				n.fillColor = _des["node_colors"][n.data.position];
+				n.fillAlpha = 0.9;
 			
-				if (n.childDegree > 0) { // possible since our tree is static
-				n.fillColor = 0xff0000; n.fillAlpha = 0.9;
-				//	n.lineColor = 0x0000ee; 
-					n.addEventListener(MouseEvent.CLICK, updateColor); 
-				} else {
-					n.fillColor = 0x0000ff; n.fillAlpha = 0.9;
-				//	n.lineColor = 0x004400; 
-				}
+//				if (n.childDegree > 0) { // possible since our tree is static
+//				n.fillColor = 0xff0000; n.fillAlpha = 0.9;
+//				//	n.lineColor = 0x0000ee; 
+//					n.addEventListener(MouseEvent.CLICK, updateColor); 
+//				} else {
+//					n.fillColor = 0x0000ff; n.fillAlpha = 0.9;
+//				//	n.lineColor = 0x004400; 
+//				}
 				n.buttonMode = true;
 			});
 		}
@@ -206,9 +214,20 @@ package {
 		
 		private function setEdgeColor(ed:EdgeSprite):void
 		{
-			ed.lineColor = _des["edge_colors"][ed.data.type];
-		//	trace("line color: "+ed.lineColor+" for type - "+ed.data.type);
-			ed.lineAlpha = 0.9;
+			if (_des["edge_colors"][ed.data.type])
+			{
+				ed.lineColor = _des["edge_colors"][ed.data.type];
+				//	trace("line color: "+ed.lineColor+" for type - "+ed.data.type);
+				ed.lineAlpha = 0.9;
+			}
+			else if(ed.data.type == "fake")
+			{
+				ed.visible = false;
+			}
+			else
+			{
+				trace("!!!!no line color for type:"+ed.data.type);
+			}
 			
 		}
 		
@@ -246,6 +265,8 @@ package {
 			for each (item in shell[item_type])
 			{
 				sprite = findOrCreateNode(item);
+				// set position to be used in organizing these genes
+				setPositionOfNode(sprite,"base");
 				trace("imported: "+item[_des["name"]]);
 				for (var key:String in _des["import"])
 				{
@@ -258,7 +279,7 @@ package {
 					var tempArray:Array = new Array;
 					tempArray.push(item);
 					//trace("going to add edge between "+prev.data.name+" -> "+item[_des["name"]]);
-					addEdgesTo(prev,tempArray,true,"pathway");
+					addEdgesTo(prev,tempArray,false,"fake");
 				}
 				prev = sprite;
 			} 
@@ -283,11 +304,17 @@ package {
 			for each(item in group)
 			{
 				sp = findOrCreateNode(item);
+				setPositionOfNode(sp,type);
 				if(sp.data.name !== node.data.name) {				
   				var ed:EdgeSprite = _graph.addEdgeFor(node,sp, directed,{type:type} );
   				trace("- added edge from: "+node.data.name+" -> "+sp.data.name+" -- "+ed.data.type);
 				}	
 			}
+		}
+		private function setPositionOfNode(node:NodeSprite, type:String):void
+		{
+			node.data.position = _des["positions"][type];
+			trace("set position of "+node.data.name+"to "+node.data.position);
 		}
 		
 	}
