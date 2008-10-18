@@ -25,7 +25,7 @@ package {
 	
 	
 	
-	[SWF(width="900", height="600", backgroundColor="#ffffff", frameRate="30")]
+	[SWF(width="800", height="600", backgroundColor="#ffffff", frameRate="30")]
 	public class integrated_network extends Sprite
 	{
 		private var _vis:Visualization;
