@@ -13,7 +13,8 @@ package {
 	import flare.vis.data.EdgeSprite;
 	import flare.vis.data.NodeSprite;
 	import flare.vis.events.SelectionEvent;
-	import flare.vis.operator.layout.RadialTreeLayout;
+	import flare.vis.operator.layout.CircleLayout;
+	import flare.vis.operator.layout.BundledEdgeRouter;
 	
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
@@ -117,21 +118,18 @@ package {
 		//	});
 			
 			trace("graph size: "+_graph.nodes.length);
-			_graph.nodes.sortBy("data.position");
+			//_graph.nodes.sortBy("data.position");
 			_vis = new Visualization(_graph);
 			_vis.bounds = new Rectangle(0, 0, w, h);
 			_vis.x = 21;
 			_vis.y = 21;
 			
-			setLayout();
-			addHoverControl();
-
-			_vis.controls.add(new ExpandControl());
-			
 			setupNodes();
 			setupEdges();
 			addHoverControl();
-			
+			setLayout();
+			_vis.controls.add(new ExpandControl());
+			//_vis.operators.add(new BundledEdgeRouter(0.5));
 			var pzc:PanZoomControl = new PanZoomControl();
 			_vis.controls.add(pzc);
 					
@@ -151,10 +149,11 @@ package {
 				n.fillColor = _des["node_colors"][n.data.position];
 				n.fillAlpha = 0.9;
 			
-//				if (n.childDegree > 0) { // possible since our tree is static
+				if (n.childDegree > 0) { // possible since our tree is static
 //				n.fillColor = 0xff0000; n.fillAlpha = 0.9;
 //				//	n.lineColor = 0x0000ee; 
-//					n.addEventListener(MouseEvent.CLICK, updateColor); 
+					n.addEventListener(MouseEvent.CLICK, updateColor);
+				} 
 //				} else {
 //					n.fillColor = 0x0000ff; n.fillAlpha = 0.9;
 //				//	n.lineColor = 0x004400; 
@@ -233,7 +232,7 @@ package {
 		
 		private function setLayout():void
 		{
-			_vis.operators.add(new RadialTreeLayout());
+			_vis.operators.add(new CircleLayout("data.position",null,true));
 		}
 		
 		private function updateColor(event:MouseEvent):void {
@@ -248,8 +247,7 @@ package {
 				t.$(n).fillColor = 0x00ff00; 
 			}
 			t.$(n).fillAlpha = 0.9;
-			t.play();
-			
+			t.play();	
 		}
 		
 		private function buildGraph(values:Object):void
