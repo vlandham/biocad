@@ -10,9 +10,13 @@
   <%= render :partial => 'new', :local => @search %>
   <p><a href="javascript:void(0)" id="advanced-search-hide">cancel</a></p>  
 </div>
-<div class="clearbox">
-  
+<div class="clearbox"></div>
+<h3><a href="javascript: void(0)" id="exact-search-show">Exact Search</a></h3>
+<div id="exact-search" style="display:none;">
+  <%= render :partial => 'exact', :local => @search %>
+  <p><a href="javascript:void(0)" id="exact-search-hide">cancel</a></p>  
 </div>
+<div class="clearbox"></div>
 <h2 class="title">Using BioCAD</h2>
 <p>KU BioCAD attempts to provide you with a powerful tool to assist in researching and analyzing oncogenes and other genes related to cancer.  You can navigate through this site in two general ways: through a search for a specific gene or by browsing genes known to be related to a particular cancer. </p>
 

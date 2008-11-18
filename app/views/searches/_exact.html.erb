@@ -1,0 +1,8 @@
+<% form_tag genes_path, :method => 'get' do %>
+  <div class="label">
+    Exact search by <strong>Gene</strong>
+  </div> 
+  <p>Use semicolons to separate gene names</p>
+    <%= text_area_tag :search, "myc; abi3; abr", :size => "120x10" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>

@@ -44,6 +44,8 @@ package {
 		private var textFormat:TextFormat;
 		private var _search_text_format:TextFormat = new TextFormat("Helvetica,Arial",16,0,true);
 		
+		private var _highlight_color:uint = 0xffD91818;
+		
 		// for highlighting purposes		
 		private var _trans:Object = {};
 		
@@ -53,7 +55,7 @@ package {
 			setupImport();
 			_base_url = "http://0.0.0.0:3000/";
 			_controller = "cancers";
-			_current_id = "7";
+			_current_id = "10";
 			
 			//_controller = root.loaderInfo.parameters.controller;
 			//_current_id = root.loaderInfo.parameters.value_id;
@@ -141,7 +143,7 @@ package {
 		/** Callback for filter events. */
 		private function onFilter(evt:Event=null):void
 		{
-			var color:uint = 0xff00ff00;
+			//var color:uint = 0xff00ff00;
 			//var query:Array = _search.query.toLowerCase().split(/\s+/);
 			//if (query.length==1 && query[0].length==0) query.pop();
 			//var regulars:Array = new Array(query.length);
@@ -164,12 +166,12 @@ package {
 					if(n.data.name.toLowerCase().search(regexp) != -1)
 					{
 						
-						t = toggleColor(n,color,true,t);
+						t = toggleColor(n,_highlight_color,true,t);
 						
 					}
 					else
 					{
-						t = toggleColor(n,color,false,t);
+						t = toggleColor(n,_highlight_color,false,t);
 					}
 					p.add(t);
 			//	}
@@ -329,6 +331,7 @@ package {
 		//	_vis.operators.add(rad);
 		}
 		
+		// !!!! Remove?
 		private function updateColor(event:MouseEvent):void {
 			
 			var t:Transitioner = new Transitioner(1);
@@ -460,12 +463,12 @@ package {
 			
 			n.visitNodes(function(neighbor_node:NodeSprite):void {
 				t = getTransitioner(neighbor_node.name, duration);
-				t = toggleColor(neighbor_node,0xff00ff00,highlight,t);
+				t = toggleColor(neighbor_node,_highlight_color,highlight,t);
 				p.add(t);
 			});
 			
 			t = getTransitioner(n.name, duration);
-			t = toggleColor(n,0xff0000ff,highlight,t);		
+			t = toggleColor(n,_highlight_color,highlight,t);		
 			p.add(t);
 			
 			p.play();

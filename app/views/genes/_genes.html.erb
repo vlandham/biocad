@@ -2,32 +2,34 @@
 <table>
   <tr>
     <th>Gene symbol</th>
-    <th>Swissprot</th>
-    <th>Genebank</th>
-    <th>Omim</th>
-    <th>Entrez</th>
-    <th>Orf</th>
-    <th>Synonym</th>
+    <th>Information</th>
+    <th>Synonyms</th>
   </tr>
 
 <% for gene in genes %>
   <tr>
-    <td><%= link_to gene.gene_symbol, gene %></td>
-    <td><%=h gene.swissprot %></td>
-    <td><%=h gene.genebank %></td>
-    <td><%=h gene.omim %></td>
-    <td><%=h gene.entrez %></td>
-    <td><%=h gene.orf %></td>
+    <td><span class="title"><%= link_to gene.gene_symbol, gene %></span></td>
+    <td>
+      <ul>
+        <li><strong>Swissprot: </strong><%=h gene.swissprot %></li>
+        <li><strong>Genebank: </strong><%=h gene.genebank %></li>
+        <li><strong>Omim: </strong><%=h gene.omim %></li>
+        <li><strong>Entrez: </strong><%=h gene.entrez %></li>
+      </ul>
+    </td>
     <td><%= gene.synonyms.join(", ") %></td>
   </tr>
 <% end %>
 </table>
-<div class="center">
-  <%= will_paginate genes %>
-</div>
-<div class="clearbox">
+<% unless genes.class == Array %>
+<!-- TODO: make this a bit less stupid -->
+  <div class="center">
+    <%= will_paginate genes %>
+  </div>
+  <div class="clearbox">
   
-</div>
+  </div>
+<% end %>
 <% else %>
 
 <p class="quiet">Sorry, no results found</p>
