@@ -1,27 +1,37 @@
 <% unless genes.empty? %>
-<table>
-  <tr>
-    <th>Gene symbol</th>
-    <th>Information</th>
-    <th>Synonyms</th>
-  </tr>
-
 <% for gene in genes %>
-  <tr>
-    <td><span class="title"><%= link_to gene.gene_symbol, gene %></span></td>
-    <td>
-      <ul>
-        <li><strong>Swissprot: </strong><%=h gene.swissprot %></li>
-        <li><strong>Genebank: </strong><%=h gene.genebank %></li>
-        <li><strong>Omim: </strong><%=h gene.omim %></li>
-        <li><strong>Entrez: </strong><%=h gene.entrez %></li>
-      </ul>
-    </td>
-    <td><%= gene.synonyms.join(", ") %></td>
-  </tr>
+<div class="gene-information">
+  <div class="column span-8 append-1 first">
+    <div class="name"><%= link_to gene.gene_symbol, gene %></div>
+    <p><strong>Synonyms: </strong><%= gene.synonyms.empty? ? "none" : gene.synonyms.join(", ")%></p>
+    <a href="javascript: void(0)" id="d" class="interaction-link">Interactions <%= image_tag('icons/arrow_down.png') %></a>
+    
+  </div>
+  <div class="column span-6 last">
+    <table>
+      <tr>
+        <th>Information</th>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <li><strong>Swissprot: </strong><%=h gene.swissprot %></li>
+            <li><strong>Genebank: </strong><%=h gene.genebank %></li>
+            <li><strong>Omim: </strong><%=h gene.omim %></li>
+            <li><strong>Entrez: </strong><%=h gene.entrez %></li>
+          </ul>
+        </td>
+    </table>
+  </div>
+  </div>
 <% end %>
-</table>
+
+
 <% unless genes.class == Array %>
+<div class="clearbox">
+
+</div>
+
 <!-- TODO: make this a bit less stupid -->
   <div class="center">
     <%= will_paginate genes %>

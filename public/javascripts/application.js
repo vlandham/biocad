@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('.corner').corner();
-  $('table').colorize();
+  $('.formatted').colorize();
   $("a#advanced-search-show").click(function(event){
     $('#advanced-search').show("slow");   
     return false;
@@ -9,7 +9,6 @@ $(document).ready(function(){
     $('#advanced-search').hide("slow");
     return false;
   });
-  
   $("a#exact-search-show").click(function(event){
     $('#exact-search').show("slow");   
     return false;

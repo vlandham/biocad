@@ -13,25 +13,30 @@ class Gene < ActiveRecord::Base
   validates_uniqueness_of :gene_symbol
   
   def self.search(search,page)
+    conditions = nil
     if search
       if search.include?(';')
-        exact_search(search,page)
+        genes = search.upcase.split(/\s*;\s*/)
+        conditions = [ "gene_symbol IN (?)", genes]
       else
-        like_search(search,page)
+       conditions = ['gene_symbol LIKE ?', "#{search}%"]
       end
     else
-      self.paginate(:all, :page => page, :order => 'gene_symbol', :include => :synonyms)
     end
+    options = {:page => page, :order => 'gene_symbol', :include => [:synonyms, :gene_interactions_out, :gene_interactions_in]}
+    options[:conditions] = conditions if conditions
+
+    self.paginate(:all, options)
   end
   
-  def self.exact_search(search,page)
-    genes = search.upcase.split(/\s*;\s*/)
-    self.find(:all, :conditions => [ "gene_symbol IN (?)", genes])
-  end
-  
-  def self.like_search(search,page)
-    self.paginate(:all, :page => page, :conditions => ['gene_symbol LIKE ?', "%#{search}%"], :order => 'gene_symbol', :include => :synonyms)
-  end
+  # def self.exact_search(search,page)
+  #   
+  #   self.find(:all, :conditions => , :include => :synonyms)
+  # end
+  # 
+  # def self.like_search(search,page)
+  #   self.paginate(:all, :page => page, :conditions => , :order => 'gene_symbol', :include => :synonyms)
+  # end
   
   def to_s
     self.gene_symbol
