@@ -226,7 +226,7 @@ form.search {
  * --------------------------------------------------------------------- */
 .gene-information {
   width:100%;
-  height: 150px;
+/*  height: 150px;*/
   border-bottom:1px solid #dddddd;
   padding-top:8px;
   padding-bottom:4px;
@@ -251,6 +251,10 @@ form.search {
   text-decoration:none;
   margin:5px;
   margin-top:30px;
+}
+
+.interaction-table {
+  margin-left: 50px;
 }
 
 

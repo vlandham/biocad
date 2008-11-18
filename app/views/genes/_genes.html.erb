@@ -4,7 +4,10 @@
   <div class="column span-8 append-1 first">
     <div class="name"><%= link_to gene.gene_symbol, gene %></div>
     <p><strong>Synonyms: </strong><%= gene.synonyms.empty? ? "none" : gene.synonyms.join(", ")%></p>
-    <a href="javascript: void(0)" id="d" class="interaction-link">Interactions <%= image_tag('icons/arrow_down.png') %></a>
+    <%= link_to_function("Interactions "+image_tag('icons/arrow_down.png'), nil, :class => "interaction-link",:id => "interaction-link-#{gene.id}") do |page| 
+      page["interactions-#{gene.id}"].visual_effect  :toggle
+      # page["interaction-link-#{gene.id}"].replace_html "Interactions "+image_tag('icons/arrow_up.png')
+    end%>
     
   </div>
   <div class="column span-6 last">
@@ -23,7 +26,34 @@
         </td>
     </table>
   </div>
+  <div class="clearbox">
+    
   </div>
+
+  <div class="interaction-table" id="interactions-<%= gene.id %>" style="display:none;">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Swissprot</th>
+        <th>Entrez</th>
+      </tr>
+      <% gene.gene_interactions.each do |interaction| %>
+        <tr>
+          <td>
+            <strong><%= interaction.gene_symbol %></strong>
+          </td>
+          <td>
+            <%= interaction.swissprot %>
+          </td>
+          <td>
+            <%= interaction.entrez %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  </div>
+  
 <% end %>
 
 
@@ -31,7 +61,6 @@
 <div class="clearbox">
 
 </div>
-
 <!-- TODO: make this a bit less stupid -->
   <div class="center">
     <%= will_paginate genes %>
