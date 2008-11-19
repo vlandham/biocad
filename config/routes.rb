@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cancers
 
   map.resources :genes
+
+  map.resources :networks
   
   map.resources :searches
  
