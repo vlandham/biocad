@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Swissprot</th>
+    <th>Entrez</th>
+    <th>Omim</th>    
+  </tr>
+  <% genes.each do |gene| %>
+    <tr>
+      <td>
+        <strong><%= link_to gene.gene_symbol, gene_path(gene) %></strong>
+      </td>
+      <td>
+        <%= gene.swissprot %>
+      </td>
+      <td>
+        <%= gene.entrez %>
+      </td>
+      <td>
+        <%= gene.omim %>
+      </td>      
+    </tr>
+  <% end %>
+</table>

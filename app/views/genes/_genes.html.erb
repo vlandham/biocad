@@ -31,26 +31,7 @@
   </div>
 
   <div class="interaction-table" id="interactions-<%= gene.id %>" style="display:none;">
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Swissprot</th>
-        <th>Entrez</th>
-      </tr>
-      <% gene.gene_interactions.each do |interaction| %>
-        <tr>
-          <td>
-            <strong><%= interaction.gene_symbol %></strong>
-          </td>
-          <td>
-            <%= interaction.swissprot %>
-          </td>
-          <td>
-            <%= interaction.entrez %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+    <%= render :partial => 'genes/gene_table', :locals => {:genes => gene.gene_interactions} %>
   </div>
   </div>
   

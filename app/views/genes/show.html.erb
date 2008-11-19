@@ -46,7 +46,7 @@
   <h2>Interactions:</h2>
   <% unless @gene.gene_interactions.empty? %>
   <div class="center">
-    <%= render :partial => 'genes/gene', :collection => @gene.gene_interactions %>
+    <%= render :partial => 'genes/gene_table', :locals => {:genes => @gene.gene_interactions} %>
   </div>
   <% else %>
     <p class="quiet">none</p>
@@ -58,7 +58,7 @@
   <h2>Transcription Factors:</h2>
   <% unless @gene.gene_transcription_factors.empty? %>
     <div class="center">
-      <%= render :partial => 'genes/gene', :collection => @gene.gene_transcription_factors %>
+      <%= render :partial => 'genes/gene_table', :locals => {:genes => @gene.gene_transcription_factors } %>
     </div>
   <% else %>
     <p class='quiet'>none</p>
