@@ -10,14 +10,14 @@
   <h2>Related Genes:</h2>
   <h3>Oncogenes</h3>
   <div class="center">
-    <%= render :partial => 'genes/gene', :collection => @cancer.onco_genes %>
+    <%= render :partial => 'genes/gene_table', :locals => {:genes => @cancer.onco_genes} %>
   </div>
   <div class="clearbox">
     
   </div>
   <h3>Suppressor Genes</h3>
   <div class="center">
-    <%= render :partial => 'genes/gene', :collection => @cancer.suppressor_genes %>
+    <%= render :partial => 'genes/gene_table', :locals => {:genes => @cancer.suppressor_genes} %>
   </div>
   
   
@@ -26,6 +26,4 @@
   </div>
 </div>
 
-
-<%= link_to 'Edit', edit_cancer_path(@cancer) %> |
-<%= link_to 'Back', cancers_path %>
+<%= link_to 'All Cancers', cancers_path %>
