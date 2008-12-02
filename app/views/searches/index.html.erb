@@ -4,14 +4,21 @@
 <%= render :partial => 'cancers/main_search' %>
 <div class="clearbox">
 </div>
+<div class="clearbox">
+</div>
 
-<h3><a href="javascript: void(0)" id="advanced-search-show">Advanced Search</a></h3>
+<div class="column span-6 append-1 first"><h3 class="center"><a href="javascript: void(0)" id="advanced-search-show">Advanced Search</a></h3></div>
+<div class="column span-6 append-1"><h3 class="center"><a href="javascript: void(0)" id="exact-search-show">Exact Search</a></h3></div>
+<div class="column span-6 last"><h3 class="center"><a href="">Upload Microarray</a></h3></div>
+<div class="clearbox">
+</div>
+
 <div id="advanced-search" style="display:none;">
   <%= render :partial => 'new', :local => @search %>
   <p><a href="javascript:void(0)" id="advanced-search-hide">cancel</a></p>  
 </div>
 <div class="clearbox"></div>
-<h3><a href="javascript: void(0)" id="exact-search-show">Exact Search</a></h3>
+
 <div id="exact-search" style="display:none;">
   <%= render :partial => 'exact', :local => @search %>
   <p><a href="javascript:void(0)" id="exact-search-hide">cancel</a></p>  
