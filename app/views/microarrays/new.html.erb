@@ -1,6 +1,6 @@
-<h2>Upload microarray</h2>
+<h2>Upload Microarray</h2>
 
-<% form_for(@microarray) do |f| %>
+<% form_for(@microarray, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -8,9 +8,10 @@
     <%= f.text_field :experiment_id %>
   </p>
   <p>
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
+    Select your Microarray data<br/>
+    <%= f.file_field :datafile %>
   </p>
+  
   <p>
     <%= f.submit "Upload" %>
   </p>

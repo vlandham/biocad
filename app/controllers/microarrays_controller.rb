@@ -13,7 +13,7 @@ class MicroarraysController < ApplicationController
   # GET /microarrays/1
   # GET /microarrays/1.xml
   def show
-    @microarray = Microarray.find(params[:id])
+    # @microarray = Microarray.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,9 +43,11 @@ class MicroarraysController < ApplicationController
     @microarray = Microarray.new(params[:microarray])
 
     respond_to do |format|
-      if @microarray.save
+      # if @microarray.save
+      if 1
         flash[:notice] = 'Microarray was successfully created.'
-        format.html { redirect_to(@microarray) }
+        # format.html { redirect_to(@microarray) }
+        format.html { redirect_to(1)}
         format.xml  { render :xml => @microarray, :status => :created, :location => @microarray }
       else
         format.html { render :action => "new" }

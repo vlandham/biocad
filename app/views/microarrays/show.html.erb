@@ -1,13 +1,16 @@
-<p>
-  <b>Experiment:</b>
-  <%=h @microarray.experiment_id %>
-</p>
+<h2 class="title">Microarray Results</h2>
+<p>Top 50 Differentially Expressed Genes</p>
+<div class="clearbox"></div>
+<%= link_to  %>
 
-<p>
-  <b>Filename:</b>
-  <%=h @microarray.filename %>
-</p>
+<% genes = ('A'..'Z').to_a %>
+<% 50.times do |val| %>
+  <div class="gene-information">
+  <h3 class="title"><%= s = ""; 3.times {|i| s << genes[rand(10)%27]}; s %></h3>
+  <p class="quiet">GO Terms:</p>
+  <p>term 1 | term 2 | term 3</p>
+  </div>
+<% end %>
 
 
-<%= link_to 'Edit', edit_microarray_path(@microarray) %> |
 <%= link_to 'Back', microarrays_path %>
