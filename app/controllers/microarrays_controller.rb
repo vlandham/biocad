@@ -36,6 +36,10 @@ class MicroarraysController < ApplicationController
   def edit
     @microarray = Microarray.find(params[:id])
   end
+  
+  def visualize
+    # TODO: Get rid of this crap!
+  end
 
   # POST /microarrays
   # POST /microarrays.xml
@@ -47,7 +51,7 @@ class MicroarraysController < ApplicationController
       if 1
         flash[:notice] = 'Microarray was successfully created.'
         # format.html { redirect_to(@microarray) }
-        format.html { redirect_to(1)}
+        format.html { redirect_to(microarray_path(1))}
         format.xml  { render :xml => @microarray, :status => :created, :location => @microarray }
       else
         format.html { render :action => "new" }

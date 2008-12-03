@@ -1,7 +1,8 @@
 <h2 class="title">Microarray Results</h2>
 <p>Top 50 Differentially Expressed Genes</p>
 <div class="clearbox"></div>
-<%= link_to  %>
+
+<h3><%= link_to "Visualize", :action => :visualize, :id => 1%></h3>
 
 <% genes = ('A'..'Z').to_a %>
 <% 50.times do |val| %>
