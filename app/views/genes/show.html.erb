@@ -16,7 +16,21 @@
   
     <h3>Orf:</h3>
     <p><%= @gene.orf  || 'unknown' %></p>
-
+    
+  <h2>Papers</h2>
+  <table>
+    <tr>
+      <th>Title</th><th>Journal</th><th>issue</th><th>year</th><th>pages</th>
+    </tr>
+    <% 5.times do |num| %>
+    <tr>
+      <td>Gene paper title <%= num+1 %></td><td>Nature</td><td>11</td><td>200<%= num+3 %></td><td>112-123</td>
+    </tr>
+    <tr>
+      <td>...The consequences to GENX are clearly shown by the results of the... </td>
+    </tr>
+    <% end %>
+  </table>
   <h2>Related Cancers:</h2>
   <h3>Onco</h3>
   <% unless @gene.onco_cancers.empty? %>
@@ -27,9 +41,8 @@
     <p class="quiet">none</p>
   <% end %>
   
-  <div class="clearbox">
-    
-  </div>
+  <div class="clearbox"></div>
+  
   <h3>Suppressed</h3>
   
   <% unless @gene.suppressed_cancers.empty? %>
