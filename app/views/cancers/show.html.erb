@@ -1,6 +1,8 @@
 <h2 class="title"><%=h @cancer.name %></h2>
 
 <div class="info">
+  
+  <h3><%= link_to "Visualize", :action => :network, :id => @cancer.id %></h3>
 
   <h2>Description:</h2>
   <p>
