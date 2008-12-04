@@ -2,7 +2,9 @@
 <p>Top 50 Differentially Expressed Genes</p>
 <div class="clearbox"></div>
 
-<h3><%= link_to "Visualize", :action => :visualize, :id => 1%></h3>
+<h3><%= link_to "GO Function", :action => :visualize, :id => 1%></h3>
+<h3><%= link_to "GO Process", :action => :visualize, :id => 1%></h3>
+<h3><%= link_to "Gene Network", :controller => :networks, :id => 850 %></h3>
 
 <% genes = ('A'..'Z').to_a %>
 <% 50.times do |val| %>
