@@ -1,4 +1,4 @@
-<h2>Upload Microarray</h2>
+<h2 class="title">Upload Microarray</h2>
 
 <% form_for(@microarray, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
@@ -8,13 +8,23 @@
     <%= f.text_field :experiment_id %>
   </p>
   <p>
-    Select your Microarray data<br/>
-    <%= f.file_field :datafile %>
+    Select Normal Microarray Dataset<br/>
+    <%= f.file_field :normal_datafile %>
+  </p>
+  
+  <p>
+    Select Cancer Microarray Dataset<br/>
+    <%= f.file_field :cancer_datafile %>
   </p>
   
   <p>
     <%= f.submit "Upload" %>
   </p>
 <% end %>
+
+<div class="clearbox"></div>
+<h2 class="title">Microarray File Format</h2>
+
+
 
 <%= link_to 'Cancel', searches_path %>
