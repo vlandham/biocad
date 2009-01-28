@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090128184638) do
+ActiveRecord::Schema.define(:version => 20090128211323) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20090128184638) do
 
   create_table "microarrays", :force => true do |t|
     t.integer  "experiment_id"
-    t.string   "filename"
+    t.string   "output_file_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "normal_datafile_file_name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20090128184638) do
     t.integer  "cancer_datafile_file_size"
     t.datetime "cancer_datafile_updated_at"
     t.string   "cancer_datafile_content_type"
+    t.string   "name"
   end
 
   create_table "passwords", :force => true do |t|
@@ -117,8 +118,8 @@ ActiveRecord::Schema.define(:version => 20090128184638) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "synonyms", :force => true do |t|
     t.integer  "gene_id"

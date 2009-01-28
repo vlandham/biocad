@@ -2,8 +2,8 @@
 
 one:
   experiment_id: 1
-  filename: MyString
+  name: MyString
 
 two:
   experiment_id: 1
-  filename: MyString
+  name: MyString

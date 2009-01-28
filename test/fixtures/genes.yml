@@ -7,7 +7,6 @@ one:
   omim: MyString
   entrez: MyString
   orf: MyString
-  synonym_id: 1
 
 two:
   gene_symbol: MyString
@@ -16,4 +15,3 @@ two:
   omim: MyString
   entrez: MyString
   orf: MyString
-  synonym_id: 1
