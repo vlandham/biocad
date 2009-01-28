@@ -3,4 +3,6 @@ class Microarray < ActiveRecord::Base
   has_attached_file :normal_datafile
   has_attached_file :cancer_datafile
   
+  validates_attachment_presence :normal_datafile
+  validates_attachment_presence :cancer_datafile
 end
