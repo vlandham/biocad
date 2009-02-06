@@ -22,7 +22,7 @@ class Microarray < ActiveRecord::Base
   
   
   def set_output_file_name
-    name = File.expand_path(File.join(File.dirname(self.normal_datafile.path),"..","output", File.basename(self.normal_datafile.path)))
+    name = File.expand_path(File.join(File.dirname(self.normal_datafile.path),"..","output", "results.txt"))
     FileUtils.mkdir_p(File.dirname(name))
     system "touch #{name}"
     self.update_attribute(:output_file_name, name)
