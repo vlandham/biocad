@@ -5,3 +5,7 @@ doc/api
 doc/app
 db/*.sqlite3
 public/microarrays
+app/matlab/microarray/*.prj
+app/matlab/microarray/*mcc*.c
+app/matlab/microarray/*_main*.c
+app/matlab/microarray/*.log
