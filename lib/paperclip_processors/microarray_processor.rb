@@ -9,7 +9,7 @@ module Paperclip
     end
     
     def make
-      dst = File.new([@basename, @format].compact.join("."), "w")
+      dst = Tempfile.new([@basename, @format].compact.join("."))
       lines = file.readlines[1...-1]
       lines.each do |line|
         dst << line.gsub(/^(\S+)\s+/, "")
