@@ -9,8 +9,10 @@ class MicroarrayTest < ActiveSupport::TestCase
   
   def test_microarray_gets_output_file_name
     assert @microarray.save
+    @microarray.start_analysis
     assert_not_equal @microarray.output_file_name, nil
   end
+  
   
   
   

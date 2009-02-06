@@ -48,8 +48,10 @@ class MicroarraysController < ApplicationController
 
     respond_to do |format|
       # if @microarray.save
-      if 1
+      if @microarray.save
+        @microarray.set_output_file_name
         flash[:notice] = 'Microarray data was successfully uploaded.'
+        @microarray.start_analysis
         # format.html { redirect_to(@microarray) }
         format.html { redirect_to(microarray_path(1))}
         format.xml  { render :xml => @microarray, :status => :created, :location => @microarray }
