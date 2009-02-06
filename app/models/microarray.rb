@@ -29,13 +29,24 @@ class Microarray < ActiveRecord::Base
   end
   
   def start_microarray_analysis
-    split_up_datasets
+    set_environmental_variables
+    # puts self.normal_datafile.path
+    larger_dataset_executable = "#{RAILS_ROOT}/lib/bin/kstoweb"
+    smaller_dataset_executable = "#{RAILS_ROOT}/lib/bin/tstoweb"
+    
+    output_name = File.join(File.dirname(self.normal_datafile.path),"..","output", File.basename(self.normal_datafile.path))
+    FileUtils.mkdir_p(output_name)
+    
+    `#{smaller_dataset_executable} #{self.normal_datafile.path} #{self.cancer_datafile.path} #{output_name}`
+  end
+    
+  def set_environmental_variables
+    # TODO: make sure this works with more OS's than just mac
+    ENV['DYLD_LIBRARY_PATH'] = "/Applications/MATLAB_R2008a/bin/maci:/Applications/MATLAB_R2008a/sys/os/maci:/System/Library/Frameworks/JavaVM.framework/JavaVM:/System/Library/Frameworks/JavaVM.framework/Libraries"    
+    ENV['XAPPLRESDIR'] = "/Applications/MATLAB_R2008a/X11/app-defaults"
+    # `export DYLD_LIBRARY_PATH=/Applications/MATLAB_R2008a/bin/maci:/Applications/MATLAB_R2008a/sys/os/maci:/System/Library/Frameworks/JavaVM.framework/JavaVM:/System/Library/Frameworks/JavaVM.framework/Libraries`
+    # `export XAPPLRESDIR=/Applications/MATLAB_R2008a/X11/app-defaults`
   end
   
-  def split_up_datasets
-    [self.normal_datafile, self.cancer_datafile].each do |datafile|
-      puts datafile.url
-    end
-  end
   
 end
