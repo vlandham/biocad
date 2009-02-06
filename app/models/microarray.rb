@@ -1,9 +1,12 @@
 class Microarray < ActiveRecord::Base
   belongs_to :experiment
   has_attached_file :normal_datafile, :path => ":rails_root/public/:class/:id/:attachment/:style_:basename.:extension",
-                    :url => "/:class/:id/:attachment/:style_:basename.:extension"
+                    :url => "/:class/:id/:attachment/:style_:basename.:extension",
+                    :styles => {:original, :stripped, :conditions, :genes}
   has_attached_file :cancer_datafile, :path => ":rails_root/public/:class/:id/:attachment/:style_:basename.:extension",
-                    :url => "/:class/:id/:attachment/:style_:basename.:extension"
+                    :url => "/:class/:id/:attachment/:style_:basename.:extension",
+                    :styles => {:original, :stripped, :conditions, :genes}
+                    :processors
   
   validates_presence_of :name
   validates_presence_of :output_file_name
