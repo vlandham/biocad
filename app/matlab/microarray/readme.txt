@@ -123,7 +123,7 @@ values.
               the EV syntax utilizes forward slashes (/), delimited by 
               colons (:). 
         NOTE: When deploying C and C++ standalone applications, it is 
-              possible to run the shell script file run_tstoweb.sh 
+              possible to run the shell script file run_kstoweb.sh 
               on UNIX and Mac instead of setting environment variables. 
               See "Requirements for Standalone Applications," below.    
 
@@ -134,24 +134,24 @@ values.
     ============================================================
 
     All Platforms:
-        * tstoweb.ctf (If present)(Component Technology File archive,
+        * kstoweb.ctf (If present)(Component Technology File archive,
           platform-dependent on target machine)
 
     Windows:
         * MCRInstaller.exe (self-extracting MATLAB Compiler Runtime
           installer)
-        * tstoweb.exe (application created by MATLAB Compiler)
+        * kstoweb.exe (application created by MATLAB Compiler)
 
     UNIX:
         * MCRInstaller.bin (MATLAB Compiler Runtime installer)
-        * tstoweb (application created by MATLAB Compiler)
-        * run_tstoweb.sh (shell script that can be run to 
+        * kstoweb (application created by MATLAB Compiler)
+        * run_kstoweb.sh (shell script that can be run to 
           temporarily set environment paths and execute the application)
 
     Mac:
         * MCRInstaller.dmg (MATLAB Compiler Runtime installer)
-        * tstoweb (application created by MATLAB Compiler)
-        * run_tstoweb.sh (shell script that can be run to 
+        * kstoweb (application created by MATLAB Compiler)
+        * run_kstoweb.sh (shell script that can be run to 
           temporarily set environment paths and execute the application)
 
 
@@ -159,10 +159,10 @@ values.
     ============================================================
 
     All Platforms:
-        * tstoweb.dylib (shared library, file extension varies by 
+        * kstoweb.dylib (shared library, file extension varies by 
           platform)
-        * tstoweb.h (library header file)
-        * tstoweb.ctf (If present)(Component Technology File archive,
+        * kstoweb.h (library header file)
+        * kstoweb.ctf (If present)(Component Technology File archive,
           platform-dependent on target machine, contains compiled M-code)
 
     Windows:
@@ -180,12 +180,12 @@ values.
     ============================================================
 
     Windows:
-        * tstoweb.ctf (Component Technology File archive, contains 
+        * kstoweb.ctf (Component Technology File archive, contains 
           compiled M-code)    
-        * tstoweb.xml (documentation files)
-        * tstoweb.pdb (program database file - if DEBUG option 
+        * kstoweb.xml (documentation files)
+        * kstoweb.pdb (program database file - if DEBUG option 
           selected)
-        * tstoweb.dll (component assembly file)
+        * kstoweb.dll (component assembly file)
         * MCRInstaller.exe (self-extracting MATLAB Compiler Runtime
           archive)
 
@@ -194,9 +194,9 @@ values.
     ============================================================
 
     Windows:
-        * tstoweb.ctf (Component Technology File archive, contains 
+        * kstoweb.ctf (Component Technology File archive, contains 
           compiled M-code)
-        * tstoweb_1_0.dll (COM component)
+        * kstoweb_1_0.dll (COM component)
         * MCRInstaller.exe (self-extracting MATLAB Compiler Runtime
           archive)      
 
@@ -205,7 +205,7 @@ values.
     ============================================================
 
     All Platforms: 
-        * tstoweb.jar (Java class files and compiled M-code)
+        * kstoweb.jar (Java class files and compiled M-code)
 
     Windows:
         * MCRInstaller.exe (self-extracting MATLAB Compiler Runtime
@@ -222,10 +222,10 @@ values.
     ============================================================
 
     Windows:
-        * tstoweb_1_0.dll (COM component)
-        * tstoweb.ctf (Component Technology File archive, contains 
+        * kstoweb_1_0.dll (COM component)
+        * kstoweb.ctf (Component Technology File archive, contains 
           compiled M-code)
-        * tstoweb.xla (Optionally created and placed in
+        * kstoweb.xla (Optionally created and placed in
            directory by the user)  
         * MCRInstaller.exe (self-extracting MATLAB Compiler Runtime
           archive)

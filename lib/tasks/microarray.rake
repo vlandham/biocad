@@ -6,6 +6,19 @@ def set_environmental_variables
   # `export XAPPLRESDIR=/Applications/MATLAB_R2008a/X11/app-defaults`
 end
 
+def large_dataset?(microarray)
+  # read the first line of the datafile to get the number of conditions
+  size = File.open(microarray.normal_datafile.path, "r") {|f| f.readline.split(/\s+/).length}
+  size = size -1 #for the name column
+  puts "[rake - microarray] number of conditions: #{size}"
+  large = size > 30 ? true : false
+  large
+end
+
+def process_results(microarray)
+  puts "[rake - microarray] Processing results"
+end
+
 
 desc "run microarray analysis tools"
 task :analyze_microarray => :environment do
@@ -15,11 +28,14 @@ task :analyze_microarray => :environment do
   larger_dataset_executable = "#{RAILS_ROOT}/lib/bin/kstoweb"
   smaller_dataset_executable = "#{RAILS_ROOT}/lib/bin/tstoweb"
   
-  executable = smaller_dataset_executable
-
-  puts "[rake - microarray] Running command: #{smaller_dataset_executable} #{microarray.normal_datafile.path} #{microarray.cancer_datafile.path} #{microarray.output_file_name}"
-  
+  executable = large_dataset?(microarray) ? larger_dataset_executable : smaller_dataset_executable
   args = [microarray.normal_datafile.path(:raw), microarray.cancer_datafile.path(:raw), microarray.output_file_name]
+  
+  puts "[rake - microarray] Running command: #{executable} #{args.join(", ")}"
   system executable, *args
-  puts $?
+  puts "[rake - microarray] Return code: #{$?}"
+  if($? == 0)
+    process_results(microarray)
+  end
+  
 end
