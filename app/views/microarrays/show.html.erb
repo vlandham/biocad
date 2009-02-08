@@ -6,14 +6,16 @@
 <h3><%= link_to "GO Process", :action => :visualize, :id => 1%></h3>
 <h3><%= link_to "Gene Network", :controller => :networks, :id => 850 %></h3>
 
-<% genes = ('A'..'Z').to_a %>
-<% 50.times do |val| %>
-  <div class="gene-information">
-  <h3 class="title"><%= s = ""; 3.times {|i| s << genes[rand(10)%27]}; s %></h3>
-  <p class="quiet">GO Terms:</p>
-  <p>term 1 | term 2 | term 3</p>
-  </div>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>P-value</th>
+  </tr>
+<% @microarray.user_genes.each do |gene| %>
+  <tr>
+    <td><%=h gene.name %></td>
+    <td><%=h gene.p_value %></td>
+  </tr>
 <% end %>
-
-
+</table>
 <%= link_to 'Back', microarrays_path %>

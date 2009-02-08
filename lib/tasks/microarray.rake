@@ -17,6 +17,17 @@ end
 
 def process_results(microarray)
   puts "[rake - microarray] Processing results"
+  results = File.open(microarray.output_file_name, "r") {|f| f.readlines}
+  gene_names = File.open(microarray.normal_datafile.path(:genes)) {|f| f.readlines}
+  results.map! do |line|
+    values = line.split("\t")
+    name_index = values[0].strip.to_i
+    name = gene_names[name_index]
+    p_value = values[1].strip.to_f
+    gene = {:name => name, :p_value => p_value, :microarray_id => microarray.id}
+    gene
+  end
+  UserGene.create results
 end
 
 
@@ -37,5 +48,5 @@ task :analyze_microarray => :environment do
   if($? == 0)
     process_results(microarray)
   end
-  
+  microarray.update_attributes({:return_value => $?, :completed_at => Time.now})
 end

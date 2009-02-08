@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090208191833) do
+ActiveRecord::Schema.define(:version => 20090208193230) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20090208191833) do
     t.integer  "gene_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "p_value"
   end
 
   create_table "users", :force => true do |t|

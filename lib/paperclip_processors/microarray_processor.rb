@@ -18,7 +18,7 @@ module Paperclip
         if @name == :raw
           dst << new_line
         elsif @name == :genes
-          dst << $1 << "\n"
+          dst << $1.gsub(/["]/, " ").strip << "\n"
         else
           logger.warn "[microarray processor] - ERROR: name: #{@name} unknown defaulting to raw"
           dst << new_line
