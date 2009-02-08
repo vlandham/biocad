@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  microarray_id: 1
+  gene_id: 1
+
+two:
+  name: MyString
+  microarray_id: 1
+  gene_id: 1

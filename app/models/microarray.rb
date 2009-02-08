@@ -1,5 +1,6 @@
 class Microarray < ActiveRecord::Base
   belongs_to :experiment
+  has_many :user_genes
   has_attached_file :normal_datafile, :path => ":rails_root/public/:class/:id/:attachment/:style_:basename.:extension",
                     :url => "/:class/:id/:attachment/:style_:basename.:extension",
                     :styles => {:raw => {:name => :raw}, :genes => {:name => :genes}},
