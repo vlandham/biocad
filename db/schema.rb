@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090208191140) do
+ActiveRecord::Schema.define(:version => 20090208191833) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(:version => 20090208191140) do
     t.datetime "cancer_datafile_updated_at"
     t.string   "cancer_datafile_content_type"
     t.string   "name"
+    t.datetime "completed_at"
+    t.integer  "return_value"
+    t.text     "return_message"
   end
 
   create_table "passwords", :force => true do |t|
