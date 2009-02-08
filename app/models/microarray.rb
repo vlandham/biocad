@@ -16,6 +16,9 @@ class Microarray < ActiveRecord::Base
   validates_attachment_presence :cancer_datafile
   validates_attachment_content_type :cancer_datafile, :content_type => 'text/plain'
   
+  def working?
+    self.completed_at == nil
+  end
     
   def start_analysis
     call_rake :analyze_microarray, :microarray_id => self.id

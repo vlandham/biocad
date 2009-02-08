@@ -1,4 +1,12 @@
 <h2 class="title">Microarray Results</h2>
+
+<% if @microarray.working? %>
+  <div class="center">
+    <%= image_tag("bar_loader.gif") %>
+    <p>Analyzing Microarray Data</p><br/>
+    <p>Refresh page in a few seconds</p>
+  </div>
+<% else %>
 <p>Top 50 Differentially Expressed Genes</p>
 <div class="clearbox"></div>
 
@@ -18,4 +26,5 @@
   </tr>
 <% end %>
 </table>
+<% end %>
 <%= link_to 'Back', microarrays_path %>
