@@ -14,9 +14,12 @@ task :analyze_microarray => :environment do
 
   larger_dataset_executable = "#{RAILS_ROOT}/lib/bin/kstoweb"
   smaller_dataset_executable = "#{RAILS_ROOT}/lib/bin/tstoweb"
+  
+  executable = smaller_dataset_executable
 
   puts "[rake - microarray] Running command: #{smaller_dataset_executable} #{microarray.normal_datafile.path} #{microarray.cancer_datafile.path} #{microarray.output_file_name}"
   
-  
-  `#{smaller_dataset_executable} #{microarray.normal_datafile.path} #{microarray.cancer_datafile.path} #{microarray.output_file_name}`
+  args = [microarray.normal_datafile.path(:raw), microarray.cancer_datafile.path(:raw), microarray.output_file_name]
+  system executable, *args
+  puts $?
 end
