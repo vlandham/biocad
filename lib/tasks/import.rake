@@ -45,6 +45,19 @@ namespace :import do
     end
   end
   
+    desc "import go terms for genes in the database"
+    task :go => :environment do
+      require 'faster_csv'
+      go_file = 'hprd_gene_go.txt'
+      full_go_file = get_data_path(go_file)
+      options = default_options
+      
+      puts "looking at#{full_go_file}"
+      FasterCSV.foreach(full_ppi_file, options) do |row|
+        
+      end
+    end
+  
   desc "import transcription factors"
   task :tf => :environment do
     require 'faster_csv'
