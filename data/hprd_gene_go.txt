@@ -1,4 +1,4 @@
-gene_symbol|molecular_functions|molecular_function_references|biological_processes|biological_process_references|cellular_components|cellular_component_references
+gene_symbol|functions|functions_reference|processes|processes_reference|components|components_reference
 NBPF11|Molecular function unknown (GO:0005554)|-|Biological_process unknown (GO:0000004)|-|Cytoplasm (GO:0005737)|16079250
 NBPF10|Molecular function unknown (GO:0005554)|-|Biological_process unknown (GO:0000004)|-|-|-
 CNNM1|Molecular function unknown (GO:0005554)|-|Cell communication (GO:0007154);Signal transduction (GO:0007165)|-|Nucleus (GO:0005634);Plasma membrane (GO:0005886)|12657465;14723793

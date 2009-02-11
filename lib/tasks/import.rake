@@ -6,6 +6,23 @@ def default_options
   {:col_sep => '|', :row_sep => :auto, :headers => true}
 end
 
+def find_go_terms(go_section,term_type)
+  terms = []
+  raw_terms = go_section.split(";").each {|x| x.strip!}.delete_if {|x| x.strip == "-"}
+  unless raw_terms.empty?
+    # there is at least one go term to be parsed
+    raw_terms.each do |raw_term|
+      term_name = raw_term.gsub(/\(GO:(\d+)\)/, "").strip
+      term_number = $1.to_i
+      go_term = GOTerm.find_by_number(term_number)
+      go_term ||= GOTerm.new(:number => term_number, :type => term_type, :name => term_name)
+      terms << go_term
+    end #each term
+  end #unless
+  
+  terms
+end
+
 namespace :import do
   
   task :all => ['db:reset',:cancers, :gene_info, :ppi, :tf]
@@ -54,7 +71,16 @@ namespace :import do
       
       puts "looking at#{full_go_file}"
       FasterCSV.foreach(full_ppi_file, options) do |row|
-        
+        # find gene
+        gene = Gene.find_by_gene_symbol(row['gene_symbol'])
+        if(gene)
+          ["functions", "processes", "components"].each do |type|
+            terms = find_go_terms(row[type], type)
+            terms.each do |go_term|
+              # create 
+            end
+          end
+        end #if gene
       end
     end
   
