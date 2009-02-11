@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090208193230) do
+ActiveRecord::Schema.define(:version => 20090211174401) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(:version => 20090208193230) do
   create_table "genes_pathways", :id => false, :force => true do |t|
     t.integer "gene_id"
     t.integer "pathway_id"
+  end
+
+  create_table "go_annotations", :force => true do |t|
+    t.integer  "go_term_id"
+    t.integer  "gene_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "go_annotations_references", :id => false, :force => true do |t|
+    t.integer "reference_id"
+    t.integer "go_annotation_id"
+  end
+
+  create_table "go_terms", :force => true do |t|
+    t.integer  "number"
+    t.string   "type"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "interactions", :force => true do |t|
@@ -102,6 +122,12 @@ ActiveRecord::Schema.define(:version => 20090208193230) do
     t.integer  "gene_id"
   end
 
+  create_table "references", :force => true do |t|
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "searches", :force => true do |t|
     t.string   "gene_symbol"
     t.string   "swissprot"
@@ -121,8 +147,8 @@ ActiveRecord::Schema.define(:version => 20090208193230) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "synonyms", :force => true do |t|
     t.integer  "gene_id"

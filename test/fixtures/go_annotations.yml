@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  go_term_id: 1
+  gene_id: 1
+
+two:
+  go_term_id: 1
+  gene_id: 1
