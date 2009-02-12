@@ -9,23 +9,34 @@ end
 def find_go_terms(go_section,term_type)
   terms = []
   raw_terms = go_section.split(";").each {|x| x.strip!}.delete_if {|x| x.strip == "-"}
+  puts raw_terms
   unless raw_terms.empty?
     # there is at least one go term to be parsed
     raw_terms.each do |raw_term|
+      # puts "parsing #{raw_term}"
       term_name = raw_term.gsub(/\(GO:(\d+)\)/, "").strip
       term_number = $1.to_i
       go_term = GOTerm.find_by_number(term_number)
-      go_term ||= GOTerm.new(:number => term_number, :type => term_type, :name => term_name)
+      go_term ||= GOTerm.new(:number => term_number, :type => term_type, :name => term_name).save!
       terms << go_term
     end #each term
-  end #unless
-  
+  end #unless 
   terms
+end #find_go_terms
+
+def parse_references(reference_section)
+  raw_references = reference_section.split(";").each {|x| x.strip!}.delete_if {|x| x.strip == "-"}
+  references = []
+  raw_references.each do |raw_reference|
+    reference = Reference.find_or_create_by_number(raw_reference.to_i)
+    references << reference
+  end
+  references
 end
 
 namespace :import do
   
-  task :all => ['db:reset',:cancers, :gene_info, :ppi, :tf]
+  task :all => ['db:reset',:cancers, :gene_info, :ppi, :tf, :go]
   
   desc "import the oncogene - cancer data.  This is probably the first one to import"
   task :cancers => :environment do
@@ -70,14 +81,19 @@ namespace :import do
       options = default_options
       
       puts "looking at#{full_go_file}"
-      FasterCSV.foreach(full_ppi_file, options) do |row|
+      FasterCSV.foreach(full_go_file, options) do |row|
         # find gene
         gene = Gene.find_by_gene_symbol(row['gene_symbol'])
         if(gene)
           ["functions", "processes", "components"].each do |type|
             terms = find_go_terms(row[type], type)
             terms.each do |go_term|
-              # create 
+              # create new annotation
+              annotation = GOAnnotation.new(:gene_id => gene.id, :go_term_id => go_term.id)
+              # create new references
+              references = parse_references(row["#{type}_reference"])
+              annotation.references = references
+              annotation.save!
             end
           end
         end #if gene
