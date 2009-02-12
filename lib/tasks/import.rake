@@ -9,7 +9,6 @@ end
 def find_go_terms(go_section,term_type)
   terms = []
   raw_terms = go_section.split(";").each {|x| x.strip!}.delete_if {|x| x.strip == "-"}
-  puts raw_terms
   unless raw_terms.empty?
     # there is at least one go term to be parsed
     raw_terms.each do |raw_term|
