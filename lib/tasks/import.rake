@@ -16,7 +16,7 @@ def find_go_terms(go_section,term_type)
       term_name = raw_term.gsub(/\(GO:(\d+)\)/, "").strip
       term_number = $1.to_i
       go_term = GOTerm.find_by_number(term_number)
-      go_term ||= GOTerm.new(:number => term_number, :type => term_type, :name => term_name).save!
+      go_term ||= GOTerm.new(:number => term_number, :go_type => term_type, :name => term_name).save!
       terms << go_term
     end #each term
   end #unless 
