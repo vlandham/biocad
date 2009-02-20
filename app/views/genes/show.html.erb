@@ -1,6 +1,6 @@
 <h2 class="title"><%=h @gene.gene_symbol %></h2>
 <div class="info">
-  <h2 id="general-info">General Information</h2>
+  <h2 class="header" id="general-info">General Information</h2>
 
     <h3>Swissprot:</h3>
     <p><%=h @gene.swissprot  || 'unknown'%></p>
@@ -18,10 +18,10 @@
     <p><%=h @gene.orf  || 'unknown' %></p>
 </div>
 
-<h2>GO Terms</h2>
+<h2 class="header">GO Terms</h2>
   <%= render :partial => 'go_terms/go_term_table', :locals => {:go_terms => @gene.go_terms} %>
 
-<h2>Related Cancers:</h2>
+<h2 class="header">Related Cancers:</h2>
   <h3>Onco</h3>
   <% unless @gene.onco_cancers.empty? %>
     <div class="center">
@@ -44,7 +44,7 @@
 
 
 <div class="clearbox"></div>
-<h2>Interactions:</h2>
+<h2 class="header">Interactions:</h2>
   <%= render :partial => 'genes/gene_table', :locals => {:genes => @gene.gene_interactions} %>
 <div class="clearbox"></div>
 

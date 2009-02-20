@@ -1,11 +1,12 @@
 <h2 class="title"><%=h @go_term.name %></h2>
 
 <div class="info">
-  <h2 id="general-info">General Information</h2>
+  <h2 class="header" id="general-info">General Information</h2>
   
   <h3>Number:</h3>
   <p><%=h @go_term.number %></p>
 </div>
 
-
+<h2 class="header">Related Genes</h2>
+<%= render :partial => 'genes/gene_table', :locals => {:genes => @go_term.genes} %>
 
