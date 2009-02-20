@@ -1,6 +1,6 @@
 <h2 class="title">Genes</h2>
 <%= render :partial => 'layouts/search',:locals => {:model_path => genes_path}  %>
-<%= render :partial => 'genes', :local => @genes %>
+<%= render :partial => 'genes', :locals => {:genes => @genes }%>
 
 <% if logged_in? %>
   <%= link_to 'New gene', new_gene_path %>
