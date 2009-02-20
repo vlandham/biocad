@@ -16,7 +16,7 @@
   
     <h3>Orf:</h3>
     <p><%=h @gene.orf  || 'unknown' %></p>
-    
+</div>
   <h2>GO Terms</h2>
   <%= render :partial => 'go_terms/go_term_table', :locals => {:go_terms => @gene.go_terms} %>
 
@@ -55,7 +55,7 @@
     <%= render :partial => 'genes/gene_table', :locals => {:genes => @gene.gene_transcription_factors } %>
   <div class="clearbox">
   </div>
-</div>
+
 <%= link_to 'All Genes', genes_path %>   <%= link_to 'Edit', edit_gene_path(@gene) if logged_in? %>
 
 
