@@ -1,0 +1,18 @@
+  <% unless go_terms.empty? %>
+  <div class="center">
+    <table>
+      <tr>
+        <th>Name</th><th>Number</th><th>Type</th>
+      </tr>
+      <% go_terms.each do |term|  %>
+        <tr>
+          <td><%= link_to term.name, go_term_path(term) %></td>
+          <td><%=h term.number %></td>
+          <td><%=h term.pretty_type %></td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+  <% else %>
+    <p class="quiet">none</p>
+  <% end %>

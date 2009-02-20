@@ -1,3 +1,5 @@
+<% unless genes.empty? %>
+<div class="center">
 <table>
   <tr>
     <th>Name</th>
@@ -22,3 +24,7 @@
     </tr>
   <% end %>
 </table>
+</div>
+<% else %>
+  <p class="quiet">none</p>
+<% end %>

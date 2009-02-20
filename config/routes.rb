@@ -14,6 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :networks
   
   map.resources :searches
+  
+  map.resources :go_terms, :controller => "GOTerms"
  
   # Restful Authentication Rewrites
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
