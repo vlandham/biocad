@@ -17,20 +17,23 @@
     <h3>Orf:</h3>
     <p><%= @gene.orf  || 'unknown' %></p>
     
-  <h2>Papers</h2>
-  <table>
-    <tr>
-      <th>Title</th><th>Journal</th><th>issue</th><th>year</th><th>pages</th>
-    </tr>
-    <% 5.times do |num| %>
-    <tr>
-      <td>Gene paper title <%= num+1 %></td><td>Nature</td><td>11</td><td>200<%= num+3 %></td><td>112-123</td>
-    </tr>
-    <tr>
-      <td>...The consequences to GENX are clearly shown by the results of the... </td>
-    </tr>
-    <% end %>
-  </table>
+  <h2>GO Terms</h2>
+  <% unless @gene.go_terms.empty? %>
+    <table>
+      <tr>
+        <th>Name</th><th>Number</th><th>Type</th>
+      </tr>
+      <% @gene.go_terms.each do |term|  %>
+        <tr>
+          <td><%= term.name %></td>
+          <td><%=h term.number %></td>
+          <td><%=h term.pretty_type %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p class="quiet">none</p>
+  <% end %>
   <h2>Related Cancers:</h2>
   <h3>Onco</h3>
   <% unless @gene.onco_cancers.empty? %>

@@ -9,8 +9,8 @@ class Gene < ActiveRecord::Base
   has_many :gene_types
   has_and_belongs_to_many :pathways
   has_many :synonyms
-  has_many :go_annotations
-  has_many :go_terms, :through => :go_annotations
+  has_many :go_annotations, :class_name => "GOAnnotation"
+  has_many :go_terms, :through => :go_annotations, :class_name => "GOTerm", :order => "go_type DESC, name ASC"
   
   validates_uniqueness_of :gene_symbol
   

@@ -88,7 +88,7 @@ namespace :import do
             terms = find_go_terms(row[type], type)
             terms.each do |go_term|
               # create new annotation
-              annotation = GOAnnotation.new(:gene_id => gene.id, :go_term_id => go_term.id)
+              annotation = GOAnnotation.find_or_create_by_gene_id_and_go_term_id(:gene_id => gene.id, :go_term_id => go_term.id)
               # create new references
               references = parse_references(row["#{type}_reference"])
               annotation.references = references
