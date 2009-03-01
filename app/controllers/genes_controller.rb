@@ -1,4 +1,5 @@
 class GenesController < ApplicationController
+  
   # GET /genes
   # GET /genes.xml
   def index
@@ -83,4 +84,5 @@ class GenesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+    
 end

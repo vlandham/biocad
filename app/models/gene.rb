@@ -14,7 +14,7 @@ class Gene < ActiveRecord::Base
   
   # Gene group connection
   has_many :gene_group_entries
-  has_many :gene_groups, :through :gene_group_entry
+  has_many :gene_groups, :through => :gene_group_entry
   
   validates_uniqueness_of :gene_symbol
   
