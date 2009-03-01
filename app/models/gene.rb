@@ -12,6 +12,10 @@ class Gene < ActiveRecord::Base
   has_many :go_annotations, :class_name => "GOAnnotation"
   has_many :go_terms, :through => :go_annotations, :class_name => "GOTerm", :order => "go_type DESC, name ASC"
   
+  # Gene group connection
+  has_many :gene_group_entries
+  has_many :gene_groups, :through :gene_group_entry
+  
   validates_uniqueness_of :gene_symbol
   
   def self.search(search,page)

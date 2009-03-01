@@ -1,0 +1,22 @@
+<h1>Listing gene_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+  </tr>
+
+<% for gene_group in @gene_groups %>
+  <tr>
+    <td><%=h gene_group.name %></td>
+    <td><%=h gene_group.user_id %></td>
+    <td><%= link_to 'Show', gene_group %></td>
+    <td><%= link_to 'Edit', edit_gene_group_path(gene_group) %></td>
+    <td><%= link_to 'Destroy', gene_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New gene_group', new_gene_group_path %>

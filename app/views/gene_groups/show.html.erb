@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @gene_group.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @gene_group.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_gene_group_path(@gene_group) %> |
+<%= link_to 'Back', gene_groups_path %>

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :gene_groups
+
   map.resources :interactions
 
   map.resources :microarrays
