@@ -1,5 +1,5 @@
 <% unless genes.empty? %>
-  <% form_for(GeneGroup.new) do |f| %>
+  <% form_for(@gene_group) do |f| %>
   <% for gene in genes %>
     <div class="gene-information">
       <div class="column span-8 append-1 first">
@@ -29,7 +29,7 @@
         </table>
       </div>
       <div class="column span-3 last">
-        <%= check_box_tag(gene.id) %>
+        <%= check_box_tag("gene-#{gene.id}", gene.id) %>
       </div>
       <div class="clearbox">
     
@@ -41,7 +41,7 @@
       </div>
   
   <% end %>
-  <%= submit_tag("Visualize") %>
+  <%= submit_tag("Add To Gene Group") %>
   <% end %>
 
   <% unless genes.class == Array %>

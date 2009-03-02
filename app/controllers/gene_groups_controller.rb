@@ -44,7 +44,7 @@ class GeneGroupsController < ApplicationController
 
     respond_to do |format|
       if @gene_group.save
-        flash[:notice] = 'GeneGroup was successfully created.'
+        flash[:notice] = 'Gene Group was successfully created.'
         format.html { redirect_to(@gene_group) }
         format.xml  { render :xml => @gene_group, :status => :created, :location => @gene_group }
       else
@@ -58,9 +58,15 @@ class GeneGroupsController < ApplicationController
   # PUT /gene_groups/1.xml
   def update
     @gene_group = GeneGroup.find(params[:id])
-
+    # TODO: There has got to be a better way to do this
+    gene_ids = params.reject {|k,v| k !~ /^gene-/}.values
+    genes = gene_ids.map {|g_id| Gene.find(g_id)}
+    genes.each do |gene|
+      @gene_group.genes << gene unless @gene_group.genes.include? gene
+    end
     respond_to do |format|
-      if @gene_group.update_attributes(params[:gene_group])
+      
+      if @gene_group.save
         flash[:notice] = 'GeneGroup was successfully updated.'
         format.html { redirect_to(@gene_group) }
         format.xml  { head :ok }

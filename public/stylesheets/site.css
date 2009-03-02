@@ -370,4 +370,9 @@ p.quiet { color: #666; }
   height:40px;
   border-bottom:6px solid #595959;
 }
+
+.flash-notice {
+  float: right;
+  margin-right: 110px;
+}
 /* EOF */
