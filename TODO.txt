@@ -1,0 +1,39 @@
+
+biocad
+
+Objectives:
+1 - integrate bing's code
+2 - preprocess input microarray files 
+3 - post process result file
+4 - start go visualization
+5 - continue gene group visualization
+
+1 -
+	x need to figure out how to compile his code
+	x where to put the source files and executable
+	 - source: app/matlab/microarray
+	 - executable: lib/microarray
+	* write rake task to automate this compilation process.
+	
+x2 - 
+	x setup variants of the input files as paperclip settings (like thumbnails is) ?
+	x figure out how to preprocess: 
+	 - need to remove first row and first column - but keep them in separate files.
+	 - write a method in microarray that modifies these files - retains all file paths
+	
+x3 - 
+	x setup the output file as another paperclip attachement
+	x parse results from bing's program
+	x display the results on some screen
+	
+4 - 
+	x read gorilla paper
+	* attempt to download source of go information
+	* try out using flare or graphviz for the visualization
+	
+5 - 
+	* need to develop a gene group class
+	* use this in all visualization processing
+	* determine where various graphs should go
+	 - current thought: just make non-restful methods for all variants under 'visualization' controller
+	 - or we could have the 'show' in gene_group be the visualization action - and the particular visualization would be determined by a type parameter.
