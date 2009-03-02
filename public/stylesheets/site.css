@@ -226,6 +226,19 @@ form.search {
   padding-bottom: 2.0em;
 }
 
+/* Gene-Group
+ * --------------------------------------------------------------------- */
+
+#gene-group {
+  position:absolute;
+  left:640px;
+  top:100px;
+  color:#777777;
+}
+
+.accent {
+  color: #FF3418;
+}
 /* Gene-information
  * --------------------------------------------------------------------- */
 .gene-information {

@@ -38,7 +38,7 @@
         </ul>
       </div>
       <div id="gene-group">
-          <p>There are <%= pluralize(@gene_group.genes.length, "gene") %> in your gene group</p>
+          <p>There are <span class="accent"><%= pluralize(@gene_group.genes.length, "gene") %></span> in your <%= link_to "gene group", gene_group_path(@gene_group) %></p>
       </div>
       <div id="content" class="column span-20 prepend-2 append-2 first last">
         <%= content_tag(:div, flash[:notice], :class => 'flash-notice') if flash[:notice] %>
