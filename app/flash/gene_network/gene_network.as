@@ -32,8 +32,8 @@ package {
 		{
 			//_base_url = "http://landham.homelinux.org/";
 			_base_url = "http://0.0.0.0:3000/";
-			_controller = "genes";
-			_current_id = "10";
+			_controller = "gene_groups";
+			_current_id = "1";
 			
 			//_controller = root.loaderInfo.parameters.controller;
 			_gene_ids = root.loaderInfo.parameters.gene_ids;
@@ -131,7 +131,7 @@ package {
 		_des = new Object;
 		_des["type"] = "gene";
 		_des["type-plural"] = "genes";
-		_des["container"] = "gene";
+		_des["container"] = "gene_group";
 		_des["name"] = "gene_symbol";
 		_des["import"] = {"gene_transcription_factors_in":true,
 						  "gene_interactions_out":false, 

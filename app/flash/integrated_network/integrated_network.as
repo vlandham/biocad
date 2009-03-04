@@ -53,8 +53,8 @@ package {
 		{
 			_des = new Object;
 			setupImport();
-			_base_url = "http://landham.homelinux.org/";
-			//_base_url = "http://0.0.0.0:3000/";
+//			_base_url = "http://landham.homelinux.org/";
+			_base_url = "http://0.0.0.0:3000/";
 			_controller = "cancers";
 			_current_id = "10";
 			
