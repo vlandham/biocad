@@ -18,6 +18,7 @@ class GeneGroupsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gene_group }
+      format.text { render :text => @gene_group.json_query.to_s}
     end
   end
   
