@@ -1,5 +1,15 @@
 <h2 class="title"><%=h @gene_group.name %></h2>
 
-<%= render :partial => 'genes/gene_table', :locals => {:genes => @gene_group.genes} %>
+<% render :layout => 'genes/gene_table', :locals => {:genes => @gene_group.genes} do |gene, section| %>
+  <%- case section  when :header-%>
+    <th>Remove</th>
+  <%- when :content -%>
+    <td><%= link_to 'Remove '+icon("cancel-small-red"), gene_group_gene_group_entry_path(@gene_group, gene), 
+        :method => :delete %></td>
+  <%- end -%>
+<%- end -%>
 
+<%= link_to 'Visualize Group '+icon("chart"), visualize_gene_group_path(@gene_group) %>
+
+<div class="clearbox"></div>
 <%= link_to "Add more Genes", genes_url %>

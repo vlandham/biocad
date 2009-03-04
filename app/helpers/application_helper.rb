@@ -6,7 +6,7 @@ module ApplicationHelper
   end
   
   def icon(name, extension="png")
-    "icons/#{name}.#{extension}"
+    image_tag("icons/#{name}.#{extension}",:class => "icon")
   end
   
   

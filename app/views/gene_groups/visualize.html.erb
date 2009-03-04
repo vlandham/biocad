@@ -6,7 +6,7 @@
     flashvars.value_id = <%= @gene_group.id %>;
   	var params = {};
   	var attributes = {};
-  	swfobject.embedSWF("/flash/gene_group_network.swf", "flash-gene-group-visualization", "800", "800", "9.0.0", false, flashvars, params, attributes);
+  	swfobject.embedSWF("/flash/gene_group_network.swf", "flash-gene-group-visualization", "850", "850", "9.0.0", false, flashvars, params, attributes);
   </script>
 <% end %>
 <div class="clearbox">
@@ -17,3 +17,7 @@
 		<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
 	</a>
 </div>
+
+<div class="clearbox"></div>
+
+<%= link_to "Back", gene_group_path(@gene_group) %>

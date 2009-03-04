@@ -5,7 +5,8 @@
     <th>Name</th>
     <th>Swissprot</th>
     <th>Entrez</th>
-    <th>Omim</th>    
+    <th>Omim</th>
+    <%= yield nil, :header %>
   </tr>
   <% genes.each do |gene| %>
     <tr>
@@ -20,7 +21,8 @@
       </td>
       <td>
         <%= gene.omim %>
-      </td>      
+      </td>  
+        <%= yield gene, :content %>  
     </tr>
   <% end %>
 </table>

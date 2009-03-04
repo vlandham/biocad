@@ -13,10 +13,10 @@ package {
 	import flare.vis.data.Data;
 	import flare.vis.data.EdgeSprite;
 	import flare.vis.data.NodeSprite;
-	import flare.vis.data.ScaleBinding;
 	import flare.vis.data.render.ArrowType;
 	import flare.vis.events.SelectionEvent;
-	
+	import flare.vis.operator.layout.ForceDirectedLayout;
+	import flare.vis.operator.layout.CircleLayout;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -294,7 +294,7 @@ package {
 					//e.arrowWidth = 2;
 				}
 				e.size = 2;
-				e.visible = false;
+				//e.visible = false;
 				e.mouseEnabled = false;
 			});
 		}
@@ -319,17 +319,21 @@ package {
 		
 		private function setLayout():void
 		{
-			var cir:StaggeredCircleLayout = new StaggeredCircleLayout("data.position",null,true);
-			var sc:ScaleBinding = new ScaleBinding();
+			//var cir:StaggeredCircleLayout = new StaggeredCircleLayout("data.position",null,true);
+			//var sc:ScaleBinding = new ScaleBinding();
 			
-			cir.angleWidth = 6 * Math.PI;
-			cir.padding = 25;
-			cir.startRadius = 10;
-			_vis.operators.add(cir);
+			//cir.angleWidth = 6 * Math.PI;
+			//cir.padding = 25;
+			//cir.startRadius = 10;
+			//_vis.operators.add(cir);
 			
-			
-		//var rad:RadialTreeLayout = new RadialTreeLayout();
-		//	_vis.operators.add(rad);
+			//var forced_layout:ForceDirectedLayout = new ForceDirectedLayout(true,100,null);
+			//_vis.operators.add(forced_layout);
+			var simple_cir:CircleLayout = new CircleLayout(null,null,true);
+			simple_cir.padding = 20;
+			_vis.operators.add(simple_cir);
+			//var simple_rad:RadialTreeLayout = new RadialTreeLayout(30,true,true);
+			//_vis.operators.add(simple_rad);
 		}
 		
 		// !!!! Remove?
@@ -352,14 +356,43 @@ package {
 		{
 			_graph = new Data;	
 			_graph.treePolicy = "depth-first";
+			// The inner container of the array of what we're visualizing
 			var item_type:String = _des["type-plural"]; 
-			var shell:Object, item:Object, in_item:Object, sprite:NodeSprite,in_item_name:String;
+			var shell:Object, item:Object, in_item:Object, sprite:NodeSprite, in_item_name:String;
+			// The outer container which currently just contains one set of item_type
 			shell = values[_des["container"]];
 			trace("importing for: "+shell["name"]);
 			
 			//!!!!! hack
+			// We are linking all the genes in the gene group to one another to 
+			// keep them in the same location when visualized.
+			// This connection won't be made for the first
+			// base node, as it doesn't have a neighbor yet			
 			var prev:NodeSprite = null;
-			
+			var first:Object = null;
+			var tempArray:Array = new Array;
+//			for each (item in shell[item_type])
+//			{
+//				sprite = findOrCreateNode(item,"base");
+//				if(prev !== null)
+//				{				
+//					
+//					tempArray.push(item);
+//					//trace("going to add edge between "+prev.data.name+" -> "+item[_des["name"]]);
+//					addEdgesTo(prev,tempArray,false,"base");
+//					tempArray.pop();
+//				}
+//				else
+//				{
+//					first = item;
+//				}
+//				prev = sprite;
+//			}
+//			// connect first and last nodes
+//			tempArray.push(first);
+//			addEdgesTo(prev,tempArray,false,"base");
+//			tempArray.pop();
+//			
 			for each (item in shell[item_type])
 			{
 				sprite = findOrCreateNode(item,"base");
@@ -374,10 +407,10 @@ package {
 				//!!!!!!!!!!! hack
 				if(prev !== null)
 				{				
-					var tempArray:Array = new Array;
 					tempArray.push(item);
 					//trace("going to add edge between "+prev.data.name+" -> "+item[_des["name"]]);
 					addEdgesTo(prev,tempArray,false,"base");
+					tempArray.pop();
 				}
 				prev = sprite;
 			} 

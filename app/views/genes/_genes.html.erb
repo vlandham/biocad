@@ -5,7 +5,7 @@
       <div class="column span-8 append-1 first">
         <div class="name"><%= link_to gene.gene_symbol, gene %></div>
         <p><strong>Synonyms: </strong><%= gene.synonyms.empty? ? "none" : gene.synonyms.join(", ")%></p>
-        <%= link_to_function("Interactions "+image_tag('icons/arrow_down.png'), nil, 
+        <%= link_to_function("Interactions "+icon('arrow_down'), nil, 
                              :class => "interaction-link",:id => "interaction-link-#{gene.id}") do |page| 
               page["interactions-#{gene.id}"].visual_effect  :toggle
             end 
@@ -29,7 +29,7 @@
         </table>
       </div>
       <div class="column span-3 last">
-        <%= check_box_tag("gene-#{gene.id}", gene.id) %>
+        <%= check_box_tag("gene-#{gene.id}", gene.id, @gene_group.genes.include?(gene)) %>
       </div>
       <div class="clearbox">
     
