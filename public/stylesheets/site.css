@@ -24,7 +24,7 @@ h1,h2,h3,h4,h5,h6 { color: #111; }
 
 /* Text Elements
  * --------------------------------------------------------------------- */
-a                 { color: #125AA7; }
+a                 { color: #125AA7; text-decoration: none;}
 a:hover           { color: #000; }
 blockquote        { color: #666; }
 
@@ -357,6 +357,11 @@ p.quiet { color: #666; }
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 0.75em;
+}
+
+.icon {
+/*  padding-top:2px;*/
+  margin-bottom:-3px;
 }
 
 #header .header-title { 
