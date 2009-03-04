@@ -20,22 +20,26 @@ class GeneGroupsController < ApplicationController
       format.xml  { render :xml => @gene_group }
     end
   end
+  
+  def visualize
+    @gene_group = GeneGroup.find(params[:id])
+  end
 
   # GET /gene_groups/new
   # GET /gene_groups/new.xml
-  def new
-    @gene_group = GeneGroup.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @gene_group }
-    end
-  end
+  # def new
+  #   @gene_group = GeneGroup.new
+  # 
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.xml  { render :xml => @gene_group }
+  #   end
+  # end
 
   # GET /gene_groups/1/edit
-  def edit
-    @gene_group = GeneGroup.find(params[:id])
-  end
+  # def edit
+  #   @gene_group = GeneGroup.find(params[:id])
+  # end
 
   # POST /gene_groups
   # POST /gene_groups.xml
@@ -79,13 +83,13 @@ class GeneGroupsController < ApplicationController
 
   # DELETE /gene_groups/1
   # DELETE /gene_groups/1.xml
-  def destroy
-    @gene_group = GeneGroup.find(params[:id])
-    @gene_group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(gene_groups_url) }
-      format.xml  { head :ok }
-    end
-  end
+  # def destroy
+  #   @gene_group = GeneGroup.find(params[:id])
+  #   @gene_group.destroy
+  # 
+  #   respond_to do |format|
+  #     format.html { redirect_to(gene_groups_url) }
+  #     format.xml  { head :ok }
+  #   end
+  # end
 end

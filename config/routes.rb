@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :gene_groups
+  map.resources :gene_groups, :member => { :visualize => :get }
 
   map.resources :interactions
 
