@@ -82,9 +82,9 @@ package {
 							  "gene_interactions_out":false, 
 							  "gene_interactions_in":false};
 			_des["positions"] = {"base":2,
-							  "gene_transcription_factors_in":1,
-							  "gene_interactions_out":3, 
-							  "gene_interactions_in":4};
+							  "gene_transcription_factors_in":3,
+							  "gene_interactions_out":4, 
+							  "gene_interactions_in":5};
 			_des["node_colors"] = {1:0xA7D285,
 							  2:0x438208,
 							  3:0x002754, 
@@ -329,8 +329,9 @@ package {
 			
 			//var forced_layout:ForceDirectedLayout = new ForceDirectedLayout(true,100,null);
 			//_vis.operators.add(forced_layout);
-			var simple_cir:CircleLayout = new CircleLayout(null,null,true);
-			simple_cir.padding = 20;
+			var simple_cir:CircleLayout = new CircleLayout("data.position",null,false);
+			simple_cir.padding = 25;
+			simple_cir.startRadius = 50;
 			_vis.operators.add(simple_cir);
 			//var simple_rad:RadialTreeLayout = new RadialTreeLayout(30,true,true);
 			//_vis.operators.add(simple_rad);
@@ -412,9 +413,12 @@ package {
 					addEdgesTo(prev,tempArray,false,"base");
 					tempArray.pop();
 				}
+				else
+				{
+					sprite.data.position = 1;
+				}
 				prev = sprite;
 			} 
-			
 		}
 		
 		private function findOrCreateNode(item:Object,type:String):NodeSprite
