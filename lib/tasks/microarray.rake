@@ -24,8 +24,11 @@ def process_results(microarray)
     name_index = values[0].strip.to_i
     name = gene_names[name_index]
     p_value = values[1].strip.to_f
-    gene = {:name => name, :p_value => p_value, :microarray_id => microarray.id}
-    gene
+    
+    user_gene = {:name => name, :p_value => p_value, :microarray_id => microarray.id}
+    # attempt to match up an actual gene to this user gene
+    gene = Gene.find_by_gene_symbol(user_gene[:name])
+    user_gene[:gene_id] = gene.id if gene
   end
   UserGene.create results
 end
