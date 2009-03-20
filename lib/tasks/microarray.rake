@@ -27,7 +27,7 @@ def process_results(microarray)
     
     user_gene = {:name => name, :p_value => p_value, :microarray_id => microarray.id}
     # attempt to match up an actual gene to this user gene
-    gene = Gene.find_by_gene_symbol(user_gene[:name])
+    gene = Gene.find_by_gene_symbol(user_gene[:name].to_s.strip.upcase)
     user_gene[:gene_id] = gene.id if gene
     user_gene
   end
@@ -37,15 +37,19 @@ end
 # grabs all the genes associated with this microarray
 #  if any and creates a gene group with them
 def create_gene_group(microarray)
+  puts "[rake - microarray] Creating Gene Group"
   group = nil
   genes_for_group = microarray.genes
-  if(genes_for_group)
+  unless(genes_for_group.empty?)
+    puts "[rake - microarray] Genes found for gene group: num: #{genes_for_group.size}"
     group = GeneGroup.new
     genes_for_group.each do |gene|
       group.genes << gene
     end
+    group.save!
+  else
+    puts "[rake - microarray] Genes not found for gene group"
   end
-  group.save!
   group
 end
 
@@ -70,8 +74,11 @@ task :analyze_microarray => :environment do
   puts "[rake - microarray] Return code: #{$?}"
   if($? == 0)
     process_results(microarray)
-    microarray.gene_group = create_gene_group(microarray)
-    microarray.save!
+    gene_group = create_gene_group(microarray)
+    if gene_group
+      microarray.gene_group = gene_group
+      microarray.save!
+    end
   end
   microarray.update_attributes({:return_value => $?, :completed_at => Time.now})
 end

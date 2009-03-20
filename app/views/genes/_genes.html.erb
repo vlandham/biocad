@@ -1,5 +1,5 @@
 <% unless genes.empty? %>
-  <% form_for(@gene_group) do |f| %>
+  <% form_for(@static_gene_group) do |f| %>
   <% for gene in genes %>
     <div class="gene-information">
       <div class="column span-8 append-1 first">
@@ -29,7 +29,7 @@
         </table>
       </div>
       <div class="column span-3 last">
-        <%= check_box_tag("gene-#{gene.id}", gene.id, @gene_group.genes.include?(gene)) %>
+        <%= check_box_tag("gene-#{gene.id}", gene.id, @static_gene_group.genes.include?(gene)) %>
       </div>
       <div class="clearbox">
     

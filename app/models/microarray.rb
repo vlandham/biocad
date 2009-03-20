@@ -1,6 +1,6 @@
 class Microarray < ActiveRecord::Base
   belongs_to :experiment
-  has_many :user_genes, :dependent => :destroy
+  has_many :user_genes, :dependent => :destroy, :order => "p_value DESC"
   has_many :genes, :through => :user_genes
   belongs_to :gene_group
   

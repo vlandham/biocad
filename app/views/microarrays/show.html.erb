@@ -10,9 +10,9 @@
 <p>Top 50 Differentially Expressed Genes</p>
 <div class="clearbox"></div>
 
-<h3><%= link_to "GO Function", :action => :visualize, :id => 1%></h3>
-<h3><%= link_to "GO Process", :action => :visualize, :id => 1%></h3>
-<h3><%= link_to "Gene Network", :controller => :networks, :id => 850 %></h3>
+<%= link_to 'Visualize Group '+icon("chart"), visualize_gene_group_path(@microarray.gene_group) if @microarray.gene_group %>
+
+<div class="clearbox"></div>
 
 <table>
   <tr>

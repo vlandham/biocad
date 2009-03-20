@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
   
   def find_gene_group
     id =  session[:gene_group_id]
-    @gene_group = nil
+    @static_gene_group = nil
     if id && GeneGroup.exists?(id)
-      @gene_group = GeneGroup.find(id, :include => :genes)
+      @static_gene_group = GeneGroup.find(id, :include => :genes)
     else
-      @gene_group = GeneGroup.create(:name => "Your Gene Group")
+      @static_gene_group = GeneGroup.create(:name => "Your Gene Group")
     end
-    session[:gene_group_id] = @gene_group.id
-    @gene_group
+    session[:gene_group_id] = @static_gene_group.id
+    @static_gene_group
   end
 
 
