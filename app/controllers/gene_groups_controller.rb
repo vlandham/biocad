@@ -13,8 +13,8 @@ class GeneGroupsController < ApplicationController
   # GET /gene_groups/1
   # GET /gene_groups/1.xml
   def show
-    @gene_group = GeneGroup.find(params[:id])
-
+    # @cur_gene_group = GeneGroup.find(params[:id], :include => :genes)
+    # as @gene_group is already acquired by application controller
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gene_group }

@@ -22,7 +22,7 @@
       <td>
         <%= gene.omim %>
       </td>  
-
+      <%= yield gene.id, :content %>
     </tr>
   <% end %>
 </table>
