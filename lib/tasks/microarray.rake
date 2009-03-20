@@ -29,6 +29,7 @@ def process_results(microarray)
     # attempt to match up an actual gene to this user gene
     gene = Gene.find_by_gene_symbol(user_gene[:name])
     user_gene[:gene_id] = gene.id if gene
+    user_gene
   end
   UserGene.create results
 end
@@ -53,9 +54,9 @@ task :analyze_microarray => :environment do
   set_environmental_variables
   microarray = Microarray.find(ENV["MICROARRAY_ID"])
   if(!microarray)
-    puts "[rake - microarray] ERROR- microarray not found]"
+    puts "[rake - microarray] ERROR- microarray not found"
   else
-    puts "[rake - microarray] Using microarray ID: #{microarray.id}]"
+    puts "[rake - microarray] Using microarray ID: #{microarray.id}"
   end
 
   larger_dataset_executable = "#{RAILS_ROOT}/lib/bin/kstoweb"
