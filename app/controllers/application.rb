@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     id =  session[:gene_group_id]
     @gene_group = nil
     if id && GeneGroup.exists?(id)
-      @gene_group = GeneGroup.find(id)
+      @gene_group = GeneGroup.find(id, :include => :genes)
     else
       @gene_group = GeneGroup.create(:name => "Your Gene Group")
     end

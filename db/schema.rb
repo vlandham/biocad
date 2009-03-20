@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090301201745) do
+ActiveRecord::Schema.define(:version => 20090312165235) do
 
   create_table "cancers", :force => true do |t|
     t.string   "name"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20090301201745) do
     t.datetime "completed_at"
     t.integer  "return_value"
     t.text     "return_message"
+    t.integer  "gene_group_id"
   end
 
   create_table "passwords", :force => true do |t|

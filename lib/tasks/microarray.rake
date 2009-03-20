@@ -33,11 +33,30 @@ def process_results(microarray)
   UserGene.create results
 end
 
+# grabs all the genes associated with this microarray
+#  if any and creates a gene group with them
+def create_gene_group(microarray)
+  group = nil
+  genes_for_group = microarray.genes
+  if(genes_for_group)
+    group = GeneGroup.new
+    genes_for_group.each do |gene|
+      group.genes << gene
+    end
+  end
+  group.save!
+  group
+end
 
 desc "run microarray analysis tools"
 task :analyze_microarray => :environment do
   set_environmental_variables
   microarray = Microarray.find(ENV["MICROARRAY_ID"])
+  if(!microarray)
+    puts "[rake - microarray] ERROR- microarray not found]"
+  else
+    puts "[rake - microarray] Using microarray ID: #{microarray.id}]"
+  end
 
   larger_dataset_executable = "#{RAILS_ROOT}/lib/bin/kstoweb"
   smaller_dataset_executable = "#{RAILS_ROOT}/lib/bin/tstoweb"
@@ -50,6 +69,8 @@ task :analyze_microarray => :environment do
   puts "[rake - microarray] Return code: #{$?}"
   if($? == 0)
     process_results(microarray)
+    microarray.gene_group = create_gene_group(microarray)
+    microarray.save!
   end
   microarray.update_attributes({:return_value => $?, :completed_at => Time.now})
 end
