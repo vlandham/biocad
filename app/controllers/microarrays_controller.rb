@@ -14,6 +14,10 @@ class MicroarraysController < ApplicationController
   # GET /microarrays/1.xml
   def show
     @microarray = Microarray.find(params[:id])
+    if @microarray.gene_group
+      switch_gene_group(@microarray.gene_group)
+      flash[:notice] = "#{@microarray.gene_group.genes.size} existing genes found. Your current Gene Group now includes them."
+    end
 
     respond_to do |format|
       format.html # show.html.erb

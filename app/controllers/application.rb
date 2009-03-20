@@ -21,6 +21,13 @@ class ApplicationController < ActionController::Base
     session[:gene_group_id] = @static_gene_group.id
     @static_gene_group
   end
+  
+  def switch_gene_group(new_gene_group)
+    if(new_gene_group)
+      session[:gene_group_id] = new_gene_group.id
+      @static_gene_group = new_gene_group
+    end
+  end
 
 
 end

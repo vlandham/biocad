@@ -20,8 +20,13 @@
     <th>P-value</th>
   </tr>
 <% @microarray.user_genes.each do |gene| %>
+  <% if gene.gene_id %>
+  <tr class="highlight">
+    <td><%=link_to gene.name, gene_url(gene.gene_id) %></td>
+  <% else %>
   <tr>
     <td><%=h gene.name %></td>
+  <% end %>
     <td><%=h gene.p_value %></td>
   </tr>
 <% end %>
