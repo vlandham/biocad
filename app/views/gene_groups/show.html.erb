@@ -13,3 +13,5 @@
 
 <div class="clearbox"></div>
 <%= link_to "Add more Genes "+icon("add"), genes_url %>
+<div class="clearbox"></div>
+<%= link_to("Back to Microarray", microarray_url(@gene_group.microarray)) if @gene_group.microarray %>
