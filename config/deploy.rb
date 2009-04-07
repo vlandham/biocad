@@ -53,3 +53,15 @@ namespace :deploy do
   end
   
 end
+
+after "deploy", :link_data
+after "deploy", :copy_db_config
+
+task :link_data do
+  run "ln -s #{shared_path}/data #{current_path}/data"
+end
+
+task :copy_db_config do
+  run "cp #{shared_path}/config/database.yml #{current_path}/config/database.yml" 
+end
+
