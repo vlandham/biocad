@@ -4,6 +4,8 @@ tmp/**/*
 doc/api
 doc/app
 db/*.sqlite3
+data/*
+config/database.yml
 public/microarrays
 app/matlab/microarray/*.prj
 app/matlab/microarray/*mcc*.c
