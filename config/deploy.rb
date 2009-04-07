@@ -18,9 +18,9 @@ set :scm_verbose, true
 #############################################################
 #	Servers
 #############################################################
-
+set :gateway, "ssh.ittc.ku.edu"
 set :user, "jvalland"
-set :domain, "ssh.ittc.ku.edu"
+set :domain, "xenon"
 server domain, :app, :web
 role :db, domain, :primary => true
 
