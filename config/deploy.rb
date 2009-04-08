@@ -54,8 +54,13 @@ namespace :deploy do
   
 end
 
-after "deploy", :link_data
-after "deploy", :copy_db_config
+after "deploy:symlink", :link_data
+after "deploy:symlink", :copy_db_config
+after "deploy:symlink", :link_rails
+
+task :link_rails
+  run "ln -s #{shared_path}/rails #{current_path}/vender/rails"
+end
 
 task :link_data do
   run "ln -s #{shared_path}/data #{current_path}/data"
