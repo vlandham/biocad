@@ -59,7 +59,7 @@ after "deploy:symlink", :copy_db_config
 after "deploy:symlink", :link_rails
 
 task :link_rails do
-  run "ln -s #{shared_path}/rails #{current_path}/vender/rails"
+  run "ln -s #{shared_path}/rails #{current_path}/vendor/rails"
 end
 
 task :link_data do
