@@ -37,6 +37,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'searches', :action => 'index'
   
   map.rails '/rails', :controller => 'searches', :action => 'index'
+  
+  map.about '/about', :controller => 'information', :action => 'index'
 
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
