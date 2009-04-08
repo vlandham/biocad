@@ -22,7 +22,10 @@
 	<body>
     <div id="main" class="container">
       <div id="header" class="column span-20 prepend-2 append-2 first last">
-        <p class="header-title">KU BioCAD</p>
+        <div class="header-title">
+          <%= link_to image_tag('front_logo_small.gif'), searches_path %>
+        </div>
+
       </div>
       <div id="top-nav">
         <ul id="nav">
@@ -31,9 +34,9 @@
           <li><%= link_to "Genes", genes_path %></li>
           <li><%= link_to "Cancers", cancers_path %></li>
           <% if logged_in? %>
-          <li><%= link_to 'Logout', logout_path %></li>
+          <!-- <li><%= link_to 'Logout', logout_path %></li> -->
           <% else %>
-          <li><%= link_to 'Login', login_path %></li>
+          <!-- <li><%= link_to 'Login', login_path %></li> -->
           <% end %>
         </ul>
       </div>

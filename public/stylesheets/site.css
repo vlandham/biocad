@@ -371,6 +371,10 @@ p.quiet { color: #666; }
 /*  border-bottom: 4px solid #dddddd;  */
 }
 
+#header .header-title img {
+  padding-top:10px;
+}
+
 #footer {
   height:40px;
   border-bottom:6px solid #595959;
