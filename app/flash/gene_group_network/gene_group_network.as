@@ -55,7 +55,7 @@ package {
 			setupImport();
 //			_base_url = "http://landham.homelinux.org/";
 			//_base_url = "http://0.0.0.0:3000/";
-			_base_url = "http://biocad.ittc.ku.edu/"
+			_base_url = "http://biocad.ittc.ku.edu/";
 			//_controller = "gene_groups";
 			//_current_id = "1";
 			
