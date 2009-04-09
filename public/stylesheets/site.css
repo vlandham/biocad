@@ -160,7 +160,17 @@ form.main-search {
 
 .left {
   float:left;
-  
+}
+
+.rounded {
+  /* Do rounding (native in Firefox and Safari, CC in IE) */
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  CCborderRadius: 20px;
+}
+
+.big-box {
+  width: 375px;
 }
 
 form.main-search  {
@@ -286,12 +296,12 @@ form.search {
 .box a {
   display:block;
   line-height:70px;
-  height:50px;
+/*  height:50px;*/
   font-size: 140%;
   text-decoration: none;
   color: #000000;
   padding:0 20px 0 20px;
-  margin:0pt;
+  margin:0px;
 }
 
 .box a:hover {

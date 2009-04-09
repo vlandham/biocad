@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.corner').corner();
+  // $('.corner').corner();
   $('.formatted').colorize();
   $("a#advanced-search-show").click(function(event){
     $('#advanced-search').show("slow");   
