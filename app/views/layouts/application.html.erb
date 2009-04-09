@@ -25,21 +25,21 @@
         <div class="header-title">
           <%= link_to image_tag('front_logo_small.gif'), searches_path %>
         </div>
+        <div id="top-nav">
+          <ul id="nav">
+            <li><%= link_to "Home", searches_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Genes", genes_path %></li>
+            <li><%= link_to "Cancers", cancers_path %></li>
+            <% if logged_in? %>
+            <!-- <li><%= link_to 'Logout', logout_path %></li> -->
+            <% else %>
+            <!-- <li><%= link_to 'Login', login_path %></li> -->
+            <% end %>
+          </ul>
+        </div>
+      </div>
 
-      </div>
-      <div id="top-nav">
-        <ul id="nav">
-          <li><%= link_to "Home", searches_path %></li>
-          <li><%= link_to "About", about_path %></li>
-          <li><%= link_to "Genes", genes_path %></li>
-          <li><%= link_to "Cancers", cancers_path %></li>
-          <% if logged_in? %>
-          <!-- <li><%= link_to 'Logout', logout_path %></li> -->
-          <% else %>
-          <!-- <li><%= link_to 'Login', login_path %></li> -->
-          <% end %>
-        </ul>
-      </div>
       <div id="gene-group">
           <p>There are <span class="accent"><%=h pluralize(@static_gene_group.genes.length, "Gene") %></span> in your <%= link_to "Gene Group", gene_group_path(@static_gene_group) %></p>
       </div>

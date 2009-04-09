@@ -56,14 +56,28 @@ hr {
    padding-left:5px;
 }
 
+#header .header-title { 
+/*  font-size: 3.5em; */
+/*  line-height: 0.8; */
+  height: 100px; 
+  float:left;
+/*  border-bottom: 4px solid #dddddd;  */
+}
+
+#header .header-title img {
+  padding-top:10px;
+}
+
+
 
 /* Nav Bar
  * --------------------------------------------------------------------- */
 #top-nav {
-  position:absolute;
-  left:540px;
-  top:30px;
-  height:32px;
+  /*position:absolute;*/
+/*  left:540px;*/
+/*  top:30px;*/
+/*  height:32px;*/
+  float:right;
 }
 
 #top-nav form.search_genes
@@ -240,10 +254,12 @@ form.search {
  * --------------------------------------------------------------------- */
 
 #gene-group {
-  position:absolute;
-  left:640px;
-  top:100px;
+/*  position:absolute;*/
+/*  left:640px;*/
+/*  top:100px;*/
   color:#777777;
+  float:right;
+  margin-right: 100px;
 }
 
 .accent {
@@ -374,16 +390,6 @@ p.quiet { color: #666; }
   margin-bottom:-3px;
 }
 
-#header .header-title { 
-  font-size: 3.5em; 
-  line-height: 0.8; 
-  height: 100px; 
-/*  border-bottom: 4px solid #dddddd;  */
-}
-
-#header .header-title img {
-  padding-top:10px;
-}
 
 #footer {
   height:40px;
