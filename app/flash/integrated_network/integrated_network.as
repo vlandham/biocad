@@ -54,13 +54,18 @@ package {
 			_des = new Object;
 			setupImport();
 //			_base_url = "http://landham.homelinux.org/";
-			_base_url = "http://0.0.0.0:3000/";
-			_controller = "cancers";
-			_current_id = "10";
+			//_base_url = "http://0.0.0.0:3000/";
+			_base_url = "http://biocad.ittc.ku.edu/";
+			//_controller = "cancers";
+			//_current_id = "10";
+			
+			_controller = root.loaderInfo.parameters.controller;
+			_current_id = root.loaderInfo.parameters.value_id;
+			_url = _base_url+_controller+"/"+_current_id+".txt";
 			
 			//_controller = root.loaderInfo.parameters.controller;
 			//_current_id = root.loaderInfo.parameters.value_id;
-			_url = _base_url+_controller+"/"+_current_id+".txt";
+			//_url = _base_url+_controller+"/"+_current_id+".txt";
 			
 			_current_nodes = {};
 			
